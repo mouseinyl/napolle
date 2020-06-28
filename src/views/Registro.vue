@@ -17,25 +17,17 @@
         </div>
       </div>
       <!--  -->
-      <!-- <div >
-        <div class="red poder_absoluto">
-          <div class="poder_relativo pos_circulo">
-            <div class="col m6 l4 marron circulo offset-l4 offset-m3 valign-wrapper center">
-              <p class="col s12 white-text mano_negra">Ñapolle</p>
-            </div>
-          </div>
-      </div>-->
-      <div class="col m6 l6 empuje-t5">
-        <div class="col m10 l8 offset-m1 offset-l2 login">
+      <div class="col m6 l6">
+        <div class="col m10 l7 offset-m1 offset-l3 login">
           <div class="col m6 l4 marron circulo offset-l4 offset-m3 valign-wrapper center">
             <p class="col s12 white-text mano_negra">Ñapolle</p>
           </div>
-          <div class="col m12 l12 empuje-t5">
-            <div class="col m6 l6">
+          <div class="col m12 l12">
+            <div class="col l6 m6">
               <i class="poder_relativo icon_input_reg material-icons marron_text">account_circle</i>
               <input type="text" class="imput" />
             </div>
-            <div class="col m6 l6">
+            <div class="col l6 m6">
               <i class="poder_relativo icon_input_reg material-icons marron_text">account_circle</i>
               <input type="text" class="imput" />
             </div>
@@ -48,12 +40,12 @@
               <input type="text" class="imput" />
             </div>
           </div>
-          <div class="col s12 empuje-t5 red">
-            <a href class="col s8 offset-s2 btn marron white-text alegreya">registrarse</a>
+          <div class="col s12 empuje-t5">
+            <a href class="col s8 offset-s2 btn marron white-text alegreya">Registrarme</a>
             <router-link
-              to="/registro"
+              to="/Login"
               class="col s6 offset-s1 center marron_text alegreya right empuje-t5"
-            >Iniciar sesion</router-link>
+            >Iniciar</router-link>
           </div>
         </div>
       </div>
@@ -104,7 +96,6 @@ export default {
   margin-top: 20px;
   height: 120px;
   border-radius: 50%;
-  box-shadow: 0px 1px 3px 0px black;
 }
 .circulo p {
   font-size: 150%;
@@ -128,7 +119,7 @@ export default {
   padding: 0px;
   margin: 0px;
   top: 18px;
-  left: 42px;
+  left: 38%;
 }
 input[type="text"]:focus {
   border-bottom: 1px solid #6b4015 !important;

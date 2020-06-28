@@ -37,7 +37,7 @@
             <router-link
               to="/registro"
               class="col s6 offset-s1 center marron_text alegreya right empuje-t5"
-            >registrarse</router-link>
+            >Registrarse</router-link>
           </div>
         </div>
       </div>
