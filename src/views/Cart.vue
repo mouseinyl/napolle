@@ -20,19 +20,22 @@
                       <img src="@/assets/svg/001-coffee-cup-1.svg" class alt srcset />
                     </div>
                   </div>
-                  <div class="col s5">{{item.nombre}}</div>
+                  <div class="col s4">{{item.nombre}}</div>
                   <div class="col s1 menu_productos_boton" @click="aumentar(index)">+</div>
                   <div class="col s1">{{item.cantidad}}</div>
                   <div class="col s1 menu_productos_boton" @click="disminuir(index)">-</div>
                   <div class="col s2">$ {{item.price}} c/u</div>
                   <div class="col s2">$ {{ valor_por_cantidad(index)}}</div>
+                  <div class="col s1" @click="eliminar(index)">
+                    <i class="material-icons">delete</i>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="conten_0">
             <span class="col marron barrar vertical _1">
-              <div class="mano_negra menu_label marron_text">Menu</div>
+              <div class="mano_negra menu_label marron_text">Resumen</div>
             </span>
             <span class="col marron barrar horrizontal _2"></span>
             <span class="col marron barrar vertical _3"></span>
@@ -111,6 +114,11 @@ export default {
       if (pan.cantidad > 0) {
         return pan.cantidad--;
       }
+    },
+    eliminar(index) {
+      alert(index);
+      var pan = this.items;
+      pan.splice(index, 1);
     }
   },
   computed: {
