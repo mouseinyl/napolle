@@ -1,10 +1,6 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>-->
-    <!-- <router-view /> -->
+    <router-view />
   </div>
 </template>
 
@@ -19,12 +15,36 @@
   font-family: "alegreya";
   src: url("./assets/font/alegreya/Alegreya-Bold.otf") format("opentype");
 }
-
+.cou {
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+}
+img {
+  width: 100%;
+  height: inherit;
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+}
 .mano_negra {
   font-family: "mano_negra" !important;
 }
 .alegreya {
   font-family: "alegreya";
+}
+
+/* color */
+.marron {
+  /* background: #523110; */
+  background: #613a13;
+}
+.marron_text {
+  /* color: #523110; */
+  color: #613a13;
+}
+.btn:hover {
+  background: #6b4015;
 }
 </style>
 

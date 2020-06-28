@@ -1,7 +1,7 @@
 <template>
-  <div class="banner">
+  <div class="Bannerwhite">
     <div class="navbar-fixed">
-      <nav v-scroll="handleScroll" class="transparent banner_white mano_negra">
+      <nav class="white banner_marron mano_negra">
         <div class="nav-wrappe">
           <a href="#" class="brand-logo p">Ñapole</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down mg-8-left">
@@ -31,64 +31,28 @@
   </div>
 </template>
 
-
-
-
 <script>
-// addEventListener("scroll", function(event) {
-//   var scroll = this.scrollY;
-//   console.log(scroll);
-//   console.log;
-
-//   if (scroll > 790) {
-//     document
-//       .getElementsByTagName("nav")[0]
-//       .classList.replace("banner_white", "banner_marron");
-//   } else {
-//     document
-//       .getElementsByTagName("nav")[0]
-//       .classList.replace("banner_marron", "banner_white");
-//   }
-// });
-import Vue from "vue";
-Vue.directive("scroll", {
-  inserted: function(el, binding) {
-    let f = function(evt) {
-      if (binding.value(evt, el)) {
-        window.removeEventListener("scroll", f);
-      }
-    };
-    window.addEventListener("scroll", f);
-  }
-});
-
 export default {
-  name: "banner",
-
-  data: function() {
+  name: "Banner_white",
+  data() {
     return {
       initied: false
     };
-  },
-  methods: {
-    handleScroll: function(evt, el) {
-      if (window.scrollY > 800) {
-        el.classList.replace("banner_white", "banner_marron");
-      } else {
-        el.classList.replace("banner_marron", "banner_white");
-      }
-    }
   }
 };
 </script>
 
-<style scoped>
+
+
+
+
+<style scoped >
 .banner_marron * {
   color: #523110 !important;
 }
-.banner_white * {
+/* .banner_white * {
   color: white;
-}
+}  */
 .p {
   margin-left: 30px;
 }
@@ -132,3 +96,5 @@ ul.chill .item {
   margin-left: 5px;
 }
 </style>
+
+
