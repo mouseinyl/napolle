@@ -141,9 +141,6 @@ export default {
 </script>
 
 <style  scoped>
-.smoke {
-  background: whitesmoke;
-}
 .menu_label {
   margin-top: 5px;
   margin-left: 10px !important;

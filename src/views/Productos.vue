@@ -1,57 +1,102 @@
 <template>
   <div class>
+    <Banner_white />
     <div class="row">
-      <Banner_white />
-      <div class="col s12 valign-wrapper">
-        <div class="col s6">
-          <!-- contenedor raiz -->
-          <div class="conten_2">
-            <!-- correcion de posicion -->
-            <div class="conten_3">
-              <!-- contenido -->
-              <div class="col s12 conten_producto">
-                <div
-                  class="col s10 offset-s1 marron center valign-wrapper alegreya white-text producto"
-                  v-for="(item,index) in items"
-                  :key="item.id"
-                >
-                  <div class="col s1">
-                    <div class="img_product">
-                      <img src="@/assets/svg/001-coffee-cup-1.svg" class alt srcset />
-                    </div>
+      <div class="col m12 l12">
+        <div class="col m2 l2 margin-t5">
+          <div class="col s12 marron_text mano_negra texto_label center">Menu</div>
+          <div class="col s12 marron"></div>
+          <div class="col s12 center margin-t5 mano_negra">
+            <a
+              href="#napolle's coffees"
+              class="col s12 margin-t5 marron_text text_category"
+            >napolle's coffees</a>
+            <a
+              href="#napolle's bakery"
+              class="col s12 margin-t5 marron_text text_category"
+            >napolle's bakery</a>
+            <a
+              href="#napolle's bebidas"
+              class="col s12 margin-t5 marron_text text_category"
+            >napolle's bebidas</a>
+          </div>
+        </div>
+        <!-- -->
+        <div class="col m10 l10 margin-t3">
+          <div class="col l12 box_productos">
+            <h6
+              class="col s11 offset-s1 margin-t5 mano_negra marron_text"
+              id="napolle's coffees"
+            >napolle's coffees</h6>
+            <div class="col m4 l3 margin-t3" v-for="(item,index) in items" :key="item.id">
+              <div class="col l10 offset-l1 smoke">
+                <div class="cantidad white-text mano_negra center" v-if="item.cantidad > 0">
+                  <div class="marron">{{item.cantidad}}</div>
+                </div>
+                <div class="col s12">
+                  <div class="col s6 offset-s3 margin-t3 circulo white">
+                    <img src="../assets/svg/005-coffee.svg" alt srcset />
                   </div>
-                  <div class="col s5">{{item.nombre}}</div>
-                  <div class="col s1 menu_productos_boton" @click="aumentar(index)">+</div>
-                  <div class="col s1">{{item.cantidad}}</div>
-                  <div class="col s1 menu_productos_boton" @click="disminuir(index)">-</div>
-                  <div class="col s2">$ {{item.price}} c/u</div>
-                  <div class="col s2">$ {{ valor_por_cantidad(index)}}</div>
+                </div>
+                <div class="col s12 margin-b5">
+                  <p class="col s12 center marron_text alegreya">{{item.nombre}}</p>
+                  <div class="col s4 mano_negra marron_text center" @click="aumentar(index)">+</div>
+                  <div class="col s4 center marron_text alegreya">{{item.price }} c/u</div>
+                  <div class="col s4 mano_negra marron_text center" @click="disminuir(index)">-</div>
+                </div>
+              </div>
+            </div>
+            <!--  -->
+            <h6
+              class="col s11 offset-s1 margin-t5 mano_negra marron_text"
+              id="napolle's bakery"
+            >apolle's Bakery</h6>
+            <div class="col m4 l3 margin-t3" v-for="(item,index) in items" :key="item.id">
+              <div class="col l10 offset-l1 smoke">
+                <div class="cantidad white-text mano_negra center" v-if="item.cantidad > 0">
+                  <div class="marron">{{item.cantidad}}</div>
+                </div>
+                <div class="col s12">
+                  <div class="col s6 offset-s3 margin-t3 circulo white">
+                    <img src="../assets/svg/005-coffee.svg" alt srcset />
+                  </div>
+                </div>
+                <div class="col s12 margin-b5">
+                  <p class="col s12 center marron_text alegreya">{{item.nombre}}</p>
+                  <div class="col s4 mano_negra marron_text center" @click="aumentar(index)">+</div>
+                  <div class="col s4 center marron_text alegreya">{{item.price }} c/u</div>
+                  <div class="col s4 mano_negra marron_text center" @click="disminuir(index)">-</div>
+                </div>
+              </div>
+            </div>
+            <!--  -->
+
+            <h6
+              class="col s11 offset-s1 margin-t5 mano_negra marron_text"
+              id="napolle's bebidas"
+            >napolle's Bebidas</h6>
+            <div class="col m4 l3 margin-t3" v-for="(item,index) in items" :key="item.id">
+              <div class="col l10 offset-l1 smoke">
+                <div class="cantidad white-text mano_negra center" v-if="item.cantidad > 0">
+                  <div class="marron">{{item.cantidad}}</div>
+                </div>
+                <div class="col s12">
+                  <div class="col s6 offset-s3 margin-t3 circulo white">
+                    <img src="../assets/svg/005-coffee.svg" alt srcset />
+                  </div>
+                </div>
+                <div class="col s12 margin-b5">
+                  <p class="col s12 center marron_text alegreya">{{item.nombre}}</p>
+                  <div class="col s4 mano_negra marron_text center" @click="aumentar(index)">+</div>
+                  <div class="col s4 center marron_text alegreya">{{item.price }} c/u</div>
+                  <div class="col s4 mano_negra marron_text center" @click="disminuir(index)">-</div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="conten_0">
-            <span class="col marron barrar vertical _1">
-              <div class="mano_negra menu_label marron_text">Menu</div>
-            </span>
-            <span class="col marron barrar horrizontal _2"></span>
-            <span class="col marron barrar vertical _3"></span>
-            <span class="col marron barrar horrizontal boton _4"></span>
-          </div>
-        </div>
-        <!--  -->
-        <div class="col s6 alegreya">
-          <div class="col s12 center">
-            <div class="col s6 offset-s3">
-              <img src="@/assets/girl_add_car.svg" alt srcset />
-            </div>
-          </div>
-          <div class="col s12 center marron_text conten">Cantidad de productos : {{cant_item}}</div>
-          <div class="col s12 center marron_text conten">Total a pagar : {{cant_total}}</div>
-          <div class="col s8 offset-s2 conten valign-wrapper">
-            <a class="col s5 btn marron alegreya waves-effect waves-light">Cancelar</a>
-            <a class="col s5 btn marron alegreya waves-effect waves-light">Pagar</a>
-          </div>
+          <!--  -->
+
+          <!--  -->
         </div>
       </div>
     </div>
@@ -94,10 +139,10 @@ export default {
     };
   },
   methods: {
-    valor_por_cantidad(index) {
-      var pan = this.items[index];
-      return pan.cantidad * pan.price;
-    },
+    // valor_por_cantidad(index) {
+    //   var pan = this.items[index];
+    //   return pan.cantidad * pan.price;
+    // },
     aumentar(index) {
       var pan = this.items[index];
       console.log(pan);
@@ -114,114 +159,102 @@ export default {
     }
   },
   computed: {
-    cant_item() {
-      var contador = 0;
-      for (var x = 0; x < this.items.length; x++) {
-        contador = contador + this.items[x].cantidad;
-      }
-      return contador;
-    },
-    cant_total() {
-      var contador = 0;
-      for (var x = 0; x < this.items.length; x++) {
-        contador = contador + this.items[x].cantidad * this.items[x].price;
-      }
-      return contador;
-    }
+    // cant_item() {
+    //   var contador = 0;
+    //   for (var x = 0; x < this.items.length; x++) {
+    //     contador = contador + this.items[x].cantidad;
+    //   }
+    //   return contador;
+    // }
+    // cant_total() {
+    //   var contador = 0;
+    //   for (var x = 0; x < this.items.length; x++) {
+    //     contador = contador + this.items[x].cantidad * this.items[x].price;
+    //   }
+    //   return contador;
+    // }
   }
 };
 </script>
 
 <style  scoped>
-.menu_label {
-  margin-top: 5px;
-  margin-left: 10px !important;
-  font-size: xx-large;
+.margin-b5 {
+  margin-bottom: 5%;
 }
-.conten_0 {
-  position: relative;
-  z-index: 10;
-}
-.conten_2 {
-  position: absolute;
-  z-index: 11;
-  width: 43%;
-}
-.conten_3 {
-  position: relative;
-  top: 90px;
-  background: blue;
-}
-.conten {
+.margin-t3 {
   margin-top: 3%;
-  /* margin-left: 2% !important; */
 }
-.barrar {
-  position: relative;
+.margin-t5 {
+  margin-top: 5%;
 }
 
-.horrizontal {
-  width: 90%;
-  height: 2px;
+.texto_label {
+  font-size: 250%;
 }
-.vertical {
-  width: 2px;
-  height: 570px;
-  padding: 0px;
+h6 {
+  font-size: x-large;
 }
-._2 {
-  top: 40px;
+.text_category {
+  font-size: larger;
 }
-._3 {
-  top: 40px;
+.text_category:hover {
+  border-bottom: 1px solid #643c14;
+  transition: 0.5s;
+  width: 70%;
+}
+
+/* .circulo {
+  height: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' enable-background='new 123.3 0 595.2 595.2' id='Layer_1' version='1.1' viewBox='123.3 0 595.2 595.2' x='0px' xml:space='preserve' y='0px' %3E%3Cg id='change1_1'%3E%3Ccircle cx='420.9' cy='297.6' fill='%23fff' r='297.6' /%3E%3C/g%3E%3C/svg%3E");
+} */
+.circulo {
+  border-radius: 50%;
+  height: auto;
+  padding: 4%;
+}
+.shadow {
+  -webkit-box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.75);
+}
+.box_productos {
   height: 500px;
-}
-._4 {
-  bottom: -39px;
-}
-
-/*  */
-.conten_producto {
-  height: 400px;
   overflow-y: scroll;
+  cursor: pointer;
 }
-.conten_producto::-webkit-scrollbar {
+.box_productos::-webkit-scrollbar {
   width: 7px;
 }
 
 /* Track */
-.conten_producto::-webkit-scrollbar-track {
+.box_productos::-webkit-scrollbar-track {
   background: #f1f1f100;
 }
 
 /* Handle */
-.conten_producto::-webkit-scrollbar-thumb {
+.box_productos::-webkit-scrollbar-thumb {
   background: #643c14;
 }
 
 /* Handle on hover */
-.conten_producto::-webkit-scrollbar-thumb:hover {
+.box_productos::-webkit-scrollbar-thumb:hover {
   background: #6b4015;
 }
-.producto {
-  margin: 1%;
-  font-size: medium;
-}
-.img_product {
-  border-radius: 50%;
-  background: whitesmoke;
-  width: 35px;
-  height: 35px;
-}
-.img_product img {
-  margin: 0px 0px 0px 3px;
-  padding: 7px 2px 5px 0px;
-}
+.cantidad {
+  position: relative;
 
-.menu_productos_boton {
-  cursor: pointer;
+  width: auto;
+  height: auto;
+  float: right;
 }
-.btn:hover {
-  background: #6b4015;
+.cantidad div {
+  position: absolute;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  top: -4px;
+  right: -20px;
 }
 </style>
