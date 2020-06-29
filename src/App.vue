@@ -46,6 +46,9 @@ img {
 .btn:hover {
   background: #6b4015;
 }
+.smoke {
+  background: whitesmoke;
+}
 </style>
 
 
