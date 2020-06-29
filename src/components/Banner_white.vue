@@ -19,7 +19,7 @@
               <div class="conten">
                 <ul class="chill alegreya">
                   <router-link class="item tra" to="/Login" v-if="initied == false">Iniciar secion</router-link>
-                  <router-link class="item" to="/perfil" v-if="initied == true">perfil</router-link>
+                  <router-link class="item" to="/Perfil" v-if="initied == true">perfil</router-link>
                   <router-link class="item" to="/" v-if="initied == true">cerrar cesion</router-link>
                 </ul>
               </div>
@@ -36,7 +36,7 @@ export default {
   name: "Banner_white",
   data() {
     return {
-      initied: false
+      initied: true
     };
   }
 };

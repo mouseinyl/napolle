@@ -4,8 +4,7 @@
   </div>
 </template>
 
-
-<style >
+<style>
 @font-face {
   font-family: "mano_negra";
   src: url("./assets/font/WC-Mano-Negra-Bta/WCManoNegraBoldBta.otf")
@@ -50,5 +49,3 @@ img {
   background: whitesmoke;
 }
 </style>
-
-
