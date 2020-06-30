@@ -3,7 +3,16 @@
     <router-view />
   </div>
 </template>
+<script>
+export default {
+  name: "app",
 
+  data() {
+    return {};
+  },
+  methods: {},
+};
+</script>
 <style>
 @font-face {
   font-family: "mano_negra";
@@ -14,10 +23,29 @@
   font-family: "alegreya";
   src: url("./assets/font/alegreya/Alegreya-Bold.otf") format("opentype");
 }
+/* margenes */
+.margin-t5 {
+  margin-top: 5%;
+}
+.margin-t10 {
+  margin-top: 10%;
+}
+
+/* fin margenes */
+.poder-relative {
+  position: relative;
+}
+
 .cou {
   position: absolute;
   width: 100%;
   bottom: 0px;
+}
+.t-xx-large {
+  font-size: xx-large;
+}
+.row {
+  margin: 0px;
 }
 img {
   width: 100%;

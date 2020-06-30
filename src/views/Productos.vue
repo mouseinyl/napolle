@@ -1,148 +1,253 @@
 <template>
-  <div class>
-    <Banner_white />
-    <div class="row">
-      <div class="col m12 l12">
-        <div class="col m2 l2 margin-t5">
-          <div class="col s12 marron_text mano_negra texto_label center">Menu</div>
-          <div class="col s12 marron"></div>
-          <div class="col s12 center margin-t5 mano_negra">
-            <a
-              href="#napolle's coffees"
-              class="col s12 margin-t5 marron_text text_category"
-            >napolle's coffees</a>
-            <a
-              href="#napolle's bakery"
-              class="col s12 margin-t5 marron_text text_category"
-            >napolle's bakery</a>
-            <a
-              href="#napolle's bebidas"
-              class="col s12 margin-t5 marron_text text_category"
-            >napolle's bebidas</a>
+  <div>
+    <div class="hide-on-small-only">
+      <Banner_white />
+      <div class="row hide-on-small-only">
+        <div class="col m12 l12">
+          <div class="col m2 l2 margin-t5">
+            <div class="col s12 marron_text mano_negra texto_label center">
+              Menu
+            </div>
+            <div class="col s12 marron"></div>
+            <div class="col s12 center margin-t10 mano_negra">
+              <a
+                href="#napolle's coffees"
+                class="col s12 margin-t10 marron_text text_category"
+                >napolle's coffees</a
+              >
+              <a
+                href="#napolle's bakery"
+                class="col s12 margin-t10 marron_text text_category"
+                >napolle's bakery</a
+              >
+              <a
+                href="#napolle's bebidas"
+                class="col s12 margin-t10 marron_text text_category"
+                >napolle's bebidas</a
+              >
+            </div>
+            <div class="col l12 m12 margin-t10">
+              <router-link
+                class="col s12 btn marron white-text margin-t10"
+                to="/Cart"
+                >Pagar</router-link
+              >
+            </div>
           </div>
-        </div>
-        <!-- -->
-        <div class="col m10 l10 margin-t3">
-          <div class="col l12 box_productos">
-            <h6
-              class="col s11 offset-s1 margin-t5 mano_negra marron_text"
-              id="napolle's coffees"
-            >napolle's coffees</h6>
-            <div class="col m4 l3 margin-t3" v-for="(item,index) in items" :key="item.id">
-              <div class="col l10 offset-l1 smoke">
-                <div class="cantidad white-text mano_negra center" v-if="item.cantidad > 0">
-                  <div class="marron">{{item.cantidad}}</div>
-                </div>
-                <div class="col s12">
-                  <div class="col s6 offset-s3 margin-t3 circulo white">
-                    <img src="../assets/svg/005-coffee.svg" alt srcset />
+          <!-- -->
+          <div class="col m10 l10 margin-t3">
+            <div class="col l12 box_productos">
+              <h6
+                class="col s11 offset-s1 margin-t5 mano_negra marron_text"
+                id="napolle's coffees"
+              >
+                napolle's coffees
+              </h6>
+              <div
+                class="col m4 l3 margin-t3"
+                v-for="(item, index) in items"
+                :key="item.id"
+              >
+                <div class="col l10 offset-l1 smoke">
+                  <div
+                    class="cantidad white-text mano_negra center"
+                    v-if="item.cantidad > 0"
+                  >
+                    <div class="marron">{{ item.cantidad }}</div>
                   </div>
-                </div>
-                <div class="col s12 margin-b5">
-                  <p class="col s12 center marron_text alegreya">{{item.nombre}}</p>
-                  <div class="col s4 mano_negra marron_text center" @click="aumentar(index)">+</div>
-                  <div class="col s4 center marron_text alegreya">{{item.price }} c/u</div>
-                  <div class="col s4 mano_negra marron_text center" @click="disminuir(index)">-</div>
+                  <div class="col s12">
+                    <div class="col s6 offset-s3 margin-t3 circulo white">
+                      <img src="../assets/svg/005-coffee.svg" alt srcset />
+                    </div>
+                  </div>
+                  <div class="col s12 margin-b5">
+                    <p class="col s12 center marron_text alegreya">
+                      {{ item.nombre }}
+                    </p>
+                    <div
+                      class="col s4 mano_negra marron_text center"
+                      @click="aumentar(index)"
+                    >
+                      +
+                    </div>
+                    <div class="col s4 center marron_text alegreya">
+                      {{ item.price }} c/u
+                    </div>
+                    <div
+                      class="col s4 mano_negra marron_text center"
+                      @click="disminuir(index)"
+                    >
+                      -
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <!--  -->
-            <h6
-              class="col s11 offset-s1 margin-t5 mano_negra marron_text"
-              id="napolle's bakery"
-            >apolle's Bakery</h6>
-            <div class="col m4 l3 margin-t3" v-for="(item,index) in items" :key="item.id">
-              <div class="col l10 offset-l1 smoke">
-                <div class="cantidad white-text mano_negra center" v-if="item.cantidad > 0">
-                  <div class="marron">{{item.cantidad}}</div>
-                </div>
-                <div class="col s12">
-                  <div class="col s6 offset-s3 margin-t3 circulo white">
-                    <img src="../assets/svg/005-coffee.svg" alt srcset />
+              <!--  -->
+              <h6
+                class="col s11 offset-s1 margin-t5 mano_negra marron_text"
+                id="napolle's bakery"
+              >
+                apolle's Bakery
+              </h6>
+              <div
+                class="col m4 l3 margin-t3"
+                v-for="(item, index) in items"
+                :key="item.id"
+              >
+                <div class="col l10 offset-l1 smoke">
+                  <div
+                    class="cantidad white-text mano_negra center"
+                    v-if="item.cantidad > 0"
+                  >
+                    <div class="marron">{{ item.cantidad }}</div>
+                  </div>
+                  <div class="col s12">
+                    <div class="col s6 offset-s3 margin-t3 circulo white">
+                      <img src="../assets/svg/005-coffee.svg" alt srcset />
+                    </div>
+                  </div>
+                  <div class="col s12 margin-b5">
+                    <p class="col s12 center marron_text alegreya">
+                      {{ item.nombre }}
+                    </p>
+                    <div
+                      class="col s4 mano_negra marron_text center"
+                      @click="aumentar(index)"
+                    >
+                      +
+                    </div>
+                    <div class="col s4 center marron_text alegreya">
+                      {{ item.price }} c/u
+                    </div>
+                    <div
+                      class="col s4 mano_negra marron_text center"
+                      @click="disminuir(index)"
+                    >
+                      -
+                    </div>
                   </div>
                 </div>
-                <div class="col s12 margin-b5">
-                  <p class="col s12 center marron_text alegreya">{{item.nombre}}</p>
-                  <div class="col s4 mano_negra marron_text center" @click="aumentar(index)">+</div>
-                  <div class="col s4 center marron_text alegreya">{{item.price }} c/u</div>
-                  <div class="col s4 mano_negra marron_text center" @click="disminuir(index)">-</div>
+              </div>
+              <!--  -->
+
+              <h6
+                class="col s11 offset-s1 margin-t5 mano_negra marron_text"
+                id="napolle's bebidas"
+              >
+                napolle's Bebidas
+              </h6>
+              <div
+                class="col m4 l3 margin-t3"
+                v-for="(item, index) in items"
+                :key="item.id"
+              >
+                <div class="col l10 offset-l1 smoke">
+                  <div
+                    class="cantidad white-text mano_negra center"
+                    v-if="item.cantidad > 0"
+                  >
+                    <div class="marron">{{ item.cantidad }}</div>
+                  </div>
+                  <div class="col s12">
+                    <div class="col s6 offset-s3 margin-t3 circulo white">
+                      <img src="../assets/svg/005-coffee.svg" alt srcset />
+                    </div>
+                  </div>
+                  <div class="col s12 margin-b5">
+                    <p class="col s12 center marron_text alegreya">
+                      {{ item.nombre }}
+                    </p>
+                    <div
+                      class="col s4 mano_negra marron_text center"
+                      @click="aumentar(index)"
+                    >
+                      +
+                    </div>
+                    <div class="col s4 center marron_text alegreya">
+                      {{ item.price }} c/u
+                    </div>
+                    <div
+                      class="col s4 mano_negra marron_text center"
+                      @click="disminuir(index)"
+                    >
+                      -
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             <!--  -->
 
-            <h6
-              class="col s11 offset-s1 margin-t5 mano_negra marron_text"
-              id="napolle's bebidas"
-            >napolle's Bebidas</h6>
-            <div class="col m4 l3 margin-t3" v-for="(item,index) in items" :key="item.id">
-              <div class="col l10 offset-l1 smoke">
-                <div class="cantidad white-text mano_negra center" v-if="item.cantidad > 0">
-                  <div class="marron">{{item.cantidad}}</div>
-                </div>
-                <div class="col s12">
-                  <div class="col s6 offset-s3 margin-t3 circulo white">
-                    <img src="../assets/svg/005-coffee.svg" alt srcset />
-                  </div>
-                </div>
-                <div class="col s12 margin-b5">
-                  <p class="col s12 center marron_text alegreya">{{item.nombre}}</p>
-                  <div class="col s4 mano_negra marron_text center" @click="aumentar(index)">+</div>
-                  <div class="col s4 center marron_text alegreya">{{item.price }} c/u</div>
-                  <div class="col s4 mano_negra marron_text center" @click="disminuir(index)">-</div>
-                </div>
-              </div>
-            </div>
+            <!--  -->
           </div>
-          <!--  -->
-
-          <!--  -->
         </div>
       </div>
+      <div class="cou">
+        <Footer />
+      </div>
     </div>
-    <div class="cou">
-      <Footer />
+    <div class="hide-on-med-and-up ">
+      <div class="row smoke caja ">
+        <div class="col s12 marron_text margin-t5">
+          <div class="col s12 t-xx-large mano_negra">Ñapolle</div>
+        </div>
+        <div class="col s6 offset-s3  margin-t10">
+          <div class="col s12 center">
+            <div class="b  white-text t-xx-large mano_negra">.</div>
+            <div class="a marron white-text t-xx-large mano_negra">
+              <div class="c">Menu</div>
+            </div>
+          </div>
+        </div>
+        <div class="col s10 offset-s1 ">
+          <div
+            class="col s10 offset-s1 smoke center valign-wrapper alegreya marron_text producto"
+            v-for="(item, index) in items"
+            :key="item.id"
+          >
+            <div class="col s1">
+              <div class="img_product">
+                <img src="@/assets/svg/001-coffee-cup-1.svg" class alt srcset />
+              </div>
+            </div>
+            <div class="col s4">{{ item.nombre }}</div>
+            <div class="col s1 menu_productos_boton" @click="aumentar(index)">
+              +
+            </div>
+            <div class="col s1">{{ item.cantidad }}</div>
+            <div class="col s1 menu_productos_boton" @click="disminuir(index)">
+              -
+            </div>
+            <div class="col s2">$ {{ item.price }} c/u</div>
+            <div class="col s2">$ {{ valor_por_cantidad(index) }}</div>
+            <div class="col s1" @click="eliminar(index)">
+              <i class="material-icons">delete</i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <navigation_bar />
     </div>
   </div>
 </template>
 <script>
 import Banner_white from "@/components/Banner_white.vue";
 import Footer from "@/components/Footer.vue";
+import Navigation_bar from "../components/Navigation_bar.vue";
+import { mapState } from "vuex";
 
 export default {
   name: "Productos",
   components: {
     Banner_white,
-    Footer
+    Footer,
+    Navigation_bar,
   },
 
   data() {
-    return {
-      items: [
-        { nombre: "chocolate", cantidad: 0, price: 350, existencia: 3 },
-        { nombre: "capuchino", cantidad: 0, price: 350, existencia: 3 },
-        { nombre: "chocolate", cantidad: 0, price: 350, existencia: 3 },
-        { nombre: "capuchino", cantidad: 0, price: 350, existencia: 3 },
-        { nombre: "chocolate", cantidad: 0, price: 350, existencia: 3 },
-        { nombre: "capuchino", cantidad: 0, price: 350, existencia: 3 },
-        { nombre: "chocolate", cantidad: 0, price: 350, existencia: 3 },
-        { nombre: "capuchino", cantidad: 0, price: 350, existencia: 3 },
-        { nombre: "cafe frio de ayer", cantidad: 0, price: 350, existencia: 3 },
-        {
-          nombre: "pan duro que añuga y mata",
-          cantidad: 0,
-          price: 350,
-          existencia: 3
-        }
-      ],
-      c: 0
-    };
+    return {};
   },
   methods: {
-    // valor_por_cantidad(index) {
-    //   var pan = this.items[index];
-    //   return pan.cantidad * pan.price;
-    // },
     aumentar(index) {
       var pan = this.items[index];
       console.log(pan);
@@ -156,28 +261,38 @@ export default {
       if (pan.cantidad > 0) {
         return pan.cantidad--;
       }
-    }
+    },
   },
   computed: {
-    // cant_item() {
-    //   var contador = 0;
-    //   for (var x = 0; x < this.items.length; x++) {
-    //     contador = contador + this.items[x].cantidad;
-    //   }
-    //   return contador;
-    // }
-    // cant_total() {
-    //   var contador = 0;
-    //   for (var x = 0; x < this.items.length; x++) {
-    //     contador = contador + this.items[x].cantidad * this.items[x].price;
-    //   }
-    //   return contador;
-    // }
-  }
+    ...mapState(["items"]),
+  },
 };
 </script>
+<style scoped>
+/* mobile css */
+.caja {
+  height: 740px;
+}
+.pos-banner {
+  top: -105px;
+}
+.a {
+  transform: rotate(-3deg);
+  margin-top: -48px;
+  background: #523110;
+  margin-left: 6px;
+  width: 94%;
+}
+.b {
+  transform: rotate(5deg);
+  background-color: #643d16;
+}
+.c {
+  transform: rotate(3deg);
+}
+</style>
 
-<style  scoped>
+<style scoped>
 .margin-b5 {
   margin-bottom: 5%;
 }
@@ -186,6 +301,9 @@ export default {
 }
 .margin-t5 {
   margin-top: 5%;
+}
+.margin-t10 {
+  margin-top: 10%;
 }
 
 .texto_label {

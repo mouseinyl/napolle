@@ -4,9 +4,10 @@ import router from './router'
 import store from './store'
 
 Vue.config.productionTip = false
-
+import vuefire from 'vuefire'
 new Vue({
   router,
   store,
+  vuefire,
   render: h => h(App)
 }).$mount('#app')
