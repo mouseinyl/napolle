@@ -27,6 +27,27 @@
           </ul>
         </div>
       </nav>
+      <div class="hide-on-large-only white-text">
+        <i class="material-icons bu" tabindex="1">menu</i>
+        <div class="space">
+          <div class="row">
+            <div
+              class="col s10 offset-m1 mano_negra marron_text t-xx-large center margin-t10 linea"
+            >Ñapolle</div>
+            <div class="col s12 margin-t10 center">
+              <div class="margin-t5 principal_tag">
+                <router-link class="marron_text mano_negra" to="/">Home</router-link>
+              </div>
+              <div class="margin-t5 principal_tag">
+                <router-link class="marron_text mano_negra" to="/Productos">Productos</router-link>
+              </div>
+              <div class="margin-t5 principal_tag">
+                <router-link class="marron_text mano_negra" to="/Cart">Cart</router-link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -83,6 +104,29 @@ export default {
 </script>
 
 <style scoped>
+.bu {
+  position: fixed;
+  z-index: 10;
+  top: 10px;
+}
+.space {
+  position: fixed;
+  width: 40%;
+  background: white;
+  height: 100%;
+  z-index: 20;
+  transition: 1s;
+  left: -40%;
+}
+.bu:focus + .space {
+  display: block;
+  left: 0%;
+  transition: 1s;
+}
+.linea {
+  border-bottom: 2px solid #523110;
+}
+
 .banner_marron * {
   color: #523110 !important;
 }
@@ -130,5 +174,7 @@ ul.chill .item {
 .dro_menu i {
   margin-top: 4px;
   margin-left: 5px;
+}
+@media only screen and (min-width: 600px) and (max-width: 992px) {
 }
 </style>
