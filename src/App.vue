@@ -44,6 +44,9 @@ export default {
 .t-xx-large {
   font-size: xx-large;
 }
+.t-medium {
+  font-size: medium;
+}
 .row {
   margin: 0px;
 }
