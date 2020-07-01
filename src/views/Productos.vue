@@ -199,30 +199,26 @@
             </div>
           </div>
         </div>
-        <div class="col s10 offset-s1 ">
+        <div class="col s10 offset-s1 conten_producto margin-t5">
           <div
-            class="col s10 offset-s1 smoke center valign-wrapper alegreya marron_text producto"
+            class="col s12 white margin-t10 center valign-wrapper alegreya marron_text producto"
             v-for="(item, index) in items"
             :key="item.id"
           >
+            <div class="col s1" @click="disminuir(index)">-</div>
             <div class="col s1">
-              <div class="img_product">
-                <img src="@/assets/svg/001-coffee-cup-1.svg" class alt srcset />
+              <div class="relative circulo_0 marron white-text">
+                <div class="relative t">
+                  {{ item.cantidad }}
+                </div>
               </div>
             </div>
+            <div class="col s2">
+              <img src="../assets/svg/001-coffee-cup-1.svg" alt="" srcset="" />
+            </div>
             <div class="col s4">{{ item.nombre }}</div>
-            <div class="col s1 menu_productos_boton" @click="aumentar(index)">
-              +
-            </div>
-            <div class="col s1">{{ item.cantidad }}</div>
-            <div class="col s1 menu_productos_boton" @click="disminuir(index)">
-              -
-            </div>
-            <div class="col s2">$ {{ item.price }} c/u</div>
-            <div class="col s2">$ {{ valor_por_cantidad(index) }}</div>
-            <div class="col s1" @click="eliminar(index)">
-              <i class="material-icons">delete</i>
-            </div>
+            <div class="col s1" @click="aumentar(index)">+</div>
+            <div class="col s3">$ {{ item.price }}</div>
           </div>
         </div>
       </div>
@@ -234,7 +230,7 @@
 import Banner_white from "@/components/Banner_white.vue";
 import Footer from "@/components/Footer.vue";
 import Navigation_bar from "../components/Navigation_bar.vue";
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "Productos",
@@ -247,24 +243,30 @@ export default {
   data() {
     return {};
   },
-  methods: {
-    aumentar(index) {
-      var pan = this.items[index];
-      console.log(pan);
-      if (pan.cantidad < pan.existencia) {
-        return pan.cantidad++;
-      }
-    },
-    disminuir(index) {
-      var pan = this.items[index];
-      console.log(pan);
-      if (pan.cantidad > 0) {
-        return pan.cantidad--;
-      }
-    },
-  },
   computed: {
     ...mapState(["items"]),
+    cant_item() {
+      var contador = 0;
+      for (var x = 0; x < this.items.length; x++) {
+        contador = contador + this.items[x].cantidad;
+      }
+      return contador;
+    },
+    cant_total() {
+      var contador = 0;
+      for (var x = 0; x < this.items.length; x++) {
+        contador = contador + this.items[x].cantidad * this.items[x].price;
+      }
+      return contador;
+    },
+  },
+  methods: {
+    ...mapMutations([
+      "aumentar",
+      "disminuir",
+      "eliminar",
+      "valor_por_cantidad",
+    ]),
   },
 };
 </script>
@@ -275,6 +277,9 @@ export default {
 }
 .pos-banner {
   top: -105px;
+}
+.relative {
+  position: relative;
 }
 .a {
   transform: rotate(-3deg);
@@ -289,6 +294,39 @@ export default {
 }
 .c {
   transform: rotate(3deg);
+}
+.circulo_0 {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  margin-left: 0px;
+  left: 7px;
+  top: -5px;
+}
+.t {
+  top: -2px;
+}
+.conten_producto {
+  height: 380px;
+  overflow-y: scroll;
+}
+.conten_producto::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+.conten_producto::-webkit-scrollbar-track {
+  background: #f1f1f100;
+}
+
+/* Handle */
+.conten_producto::-webkit-scrollbar-thumb {
+  background: #643c14;
+}
+
+/* Handle on hover */
+.conten_producto::-webkit-scrollbar-thumb:hover {
+  background: #6b4015;
 }
 </style>
 
