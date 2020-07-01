@@ -56,21 +56,6 @@
 
 
 <script>
-// addEventListener("scroll", function(event) {
-//   var scroll = this.scrollY;
-//   console.log(scroll);
-//   console.log;
-
-//   if (scroll > 790) {
-//     document
-//       .getElementsByTagName("nav")[0]
-//       .classList.replace("banner_white", "banner_marron");
-//   } else {
-//     document
-//       .getElementsByTagName("nav")[0]
-//       .classList.replace("banner_marron", "banner_white");
-//   }
-// });
 import Vue from "vue";
 Vue.directive("scroll", {
   inserted: function(el, binding) {
@@ -108,6 +93,7 @@ export default {
   position: fixed;
   z-index: 10;
   top: 10px;
+  left: 10px;
 }
 .space {
   position: fixed;
