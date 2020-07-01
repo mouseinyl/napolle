@@ -27,6 +27,27 @@
           </ul>
         </div>
       </nav>
+      <div class="hide-on-large-only">
+        <i class="material-icons bu marron_text" tabindex="1">menu</i>
+        <div class="space">
+          <div class="row">
+            <div
+              class="col s10 offset-m1 mano_negra marron_text t-xx-large center margin-t10 linea"
+            >Ñapolle</div>
+            <div class="col s12 margin-t10 center">
+              <div class="margin-t5 principal_tag">
+                <router-link class="marron_text mano_negra" to="/">Home</router-link>
+              </div>
+              <div class="margin-t5 principal_tag">
+                <router-link class="marron_text mano_negra" to="/Productos">Productos</router-link>
+              </div>
+              <div class="margin-t5 principal_tag">
+                <router-link class="marron_text mano_negra" to="/Cart">Cart</router-link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -47,12 +68,33 @@ export default {
 
 
 <style scoped >
+.bu {
+  position: fixed;
+  z-index: 10;
+  top: 10px;
+  left: 10px;
+}
+.space {
+  position: fixed;
+  width: 40%;
+  background: white;
+  height: 100%;
+  z-index: 20;
+  transition: 1s;
+  left: -40%;
+}
+.bu:focus + .space {
+  display: block;
+  left: 0%;
+  transition: 1s;
+}
+.linea {
+  border-bottom: 2px solid #523110;
+}
 .banner_marron * {
   color: #523110 !important;
 }
-/* .banner_white * {
-  color: white;
-}  */
+
 .p {
   margin-left: 30px;
 }
