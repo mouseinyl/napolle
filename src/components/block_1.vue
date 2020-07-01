@@ -35,11 +35,13 @@
   color: white;
 }
 
-.eslogan pre {
-  transform: translate(40%, 30%);
-}
-pre {
-  font-size: 70px;
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+  .eslogan pre {
+    transform: translate(-15%, 27%);
+  }
+  pre {
+    font-size: 70px;
+  }
 }
 </style>
 
