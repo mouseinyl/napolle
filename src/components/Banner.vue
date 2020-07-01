@@ -175,6 +175,4 @@ ul.chill .item {
   margin-top: 4px;
   margin-left: 5px;
 }
-@media only screen and (min-width: 600px) and (max-width: 992px) {
-}
 </style>
