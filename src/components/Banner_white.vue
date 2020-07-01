@@ -27,23 +27,23 @@
           </ul>
         </div>
       </nav>
-      <div class="hide-on-large-only white-text">
-        <i class="material-icons bu" tabindex="1">menu</i>
+      <div class="hide-on-large-only">
+        <i class="material-icons bu marron_text" tabindex="1">menu</i>
         <div class="space">
           <div class="row">
             <div
               class="col s10 offset-m1 mano_negra marron_text t-xx-large center margin-t10 linea"
             >Ñapolle</div>
             <ul class="col s12 margin-t10 center">
-              <li class="col s12 margin-t5 principal_tag" tabindex="1">
-                <router-link class="marron_text mano_negra" to="/">Home</router-link>
+              <li class="col s12 margin-t5 principal_tag" tabindex="2">
+                <router-link class="col s12 marron_text mano_negra" to="/">Home</router-link>
               </li>
-              <li class="col s12 margin-t5 principal_tag" tabindex="1">
-                <router-link class="marron_text mano_negra" to="/Productos">Productos</router-link>
+              <li class="col s12 margin-t5 principal_tag" tabindex="2">
+                <router-link class="col s12 marron_text mano_negra" to="/Productos">Productos</router-link>
               </li>
 
-              <li class="col s12 margin-t5 principal_tag" tabindex="1">
-                <router-link class="marron_text mano_negra" to="/Cart">Cart</router-link>
+              <li class="col s12 margin-t5 principal_tag" tabindex="2">
+                <router-link class="col s12 marron_text mano_negra" to="/Cart">Cart</router-link>
               </li>
             </ul>
           </div>
