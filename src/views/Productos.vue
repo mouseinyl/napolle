@@ -221,6 +221,14 @@
             <div class="col s3">$ {{ item.price }}</div>
           </div>
         </div>
+        <div class="col s12 margin-t5 " v-if="cant_total > 0">
+          <router-link
+            to="/Cart"
+            class="col s6 offset-s3 btn mano_negra marron"
+          >
+            Completar pago
+          </router-link>
+        </div>
       </div>
       <navigation_bar />
     </div>
