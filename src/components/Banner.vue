@@ -34,17 +34,18 @@
             <div
               class="col s10 offset-m1 mano_negra marron_text t-xx-large center margin-t10 linea"
             >Ñapolle</div>
-            <div class="col s12 margin-t10 center">
-              <div class="margin-t5 principal_tag">
+            <ul class="col s12 margin-t10 center">
+              <li class="col s12 margin-t5 principal_tag" tabindex="1">
                 <router-link class="marron_text mano_negra" to="/">Home</router-link>
-              </div>
-              <div class="margin-t5 principal_tag">
+              </li>
+              <li class="col s12 margin-t5 principal_tag" tabindex="1">
                 <router-link class="marron_text mano_negra" to="/Productos">Productos</router-link>
-              </div>
-              <div class="margin-t5 principal_tag">
+              </li>
+
+              <li class="col s12 margin-t5 principal_tag" tabindex="1">
                 <router-link class="marron_text mano_negra" to="/Cart">Cart</router-link>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
