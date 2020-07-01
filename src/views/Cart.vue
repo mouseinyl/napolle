@@ -13,7 +13,7 @@
                 <div class="col s12 conten_producto">
                   <div
                     class="col s10 offset-s1 smoke center valign-wrapper alegreya marron_text producto"
-                    v-for="(item, index) in items"
+                    v-for="(item, index) of items"
                     :key="item.id"
                   >
                     <div class="col s1">
@@ -41,8 +41,8 @@
                       -
                     </div>
                     <div class="col s2">$ {{ item.price }} c/u</div>
-                    <div class="col s2">$ {{}}</div>
-                    <div class="col s1">
+                    <div class="col s2">$ {{ valor_por_cantidad(index) }}</div>
+                    <div class="col s1" @click="eliminar(index)">
                       <i class="material-icons">delete</i>
                     </div>
                   </div>
@@ -67,10 +67,10 @@
               </div>
             </div>
             <div class="col s12 center marron_text conten">
-              Cantidad de productos :
+              Cantidad de productos :{{ cant_item }}
             </div>
             <div class="col s12 center marron_text conten">
-              Total a pagar :
+              Total a pagar : {{ cant_total }}
             </div>
             <div class="col s8 offset-s2 conten valign-wrapper">
               <a class="col s5 btn marron alegreya waves-effect waves-light"
@@ -103,10 +103,29 @@ export default {
   },
   computed: {
     ...mapState(["items"]),
+    cant_item() {
+      var contador = 0;
+      for (var x = 0; x < this.items.length; x++) {
+        contador = contador + this.items[x].cantidad;
+      }
+      return contador;
+    },
+    cant_total() {
+      var contador = 0;
+      for (var x = 0; x < this.items.length; x++) {
+        contador = contador + this.items[x].cantidad * this.items[x].price;
+      }
+      return contador;
+    },
   },
 
   methods: {
-    ...mapMutations(["aumentar"]),
+    ...mapMutations([
+      "aumentar",
+      "disminuir",
+      "eliminar",
+      "valor_por_cantidad",
+    ]),
   },
 };
 </script>
