@@ -1,61 +1,73 @@
 <template>
-  <div>
+  <div @loadstart="new_list">
     <div class="hide-on-small-only">
+      <Banner_white />
       <div class="row">
-        <Banner_white />
-        <div class="col s12 valign-wrapper">
-          <div class="col s6">
-            <!-- contenedor raiz -->
-            <div class="conten_2">
-              <!-- correcion de posicion -->
-              <div class="conten_3">
+        <div class="col s12">
+          <div class="col m12 l6">
+            <ul class="relative">
+              <li class="relative barra_1 marron">
                 <!-- contenido -->
-                <div class="col s12 conten_producto">
-                  <div
-                    class="col s10 offset-s1 smoke center valign-wrapper alegreya marron_text producto"
-                    v-for="(item, index) of selecion"
-                    :key="item.id"
-                  >
-                    <div class="col s1">
-                      <div class="img_product">
-                        <img src="@/assets/svg/001-coffee-cup-1.svg" class alt srcset />
+                <div v-if="selecion.length > 0">
+                  <div class="col s12 conten_producto margin-t10">
+                    <div
+                      class="col m12 l10 offset-l1 smoke center valign-wrapper alegreya marron_text producto"
+                      v-for="(item, index) of items"
+                      :key="item.id"
+                    >
+                      <div class="col s1">
+                        <div class="img_product">
+                          <img src="@/assets/svg/001-coffee-cup-1.svg" class alt srcset />
+                        </div>
                       </div>
-                    </div>
-                    <div class="col s4">{{ item.nombre }}</div>
-                    <div class="col s1 menu_productos_boton" @click="aumentar(index)">+</div>
-                    <div class="col s1">{{ item.cantidad }}</div>
-                    <div class="col s1 menu_productos_boton" @click="disminuir(index)">-</div>
-                    <div class="col s2">$ {{ item.price }} c/u</div>
-                    <div class="col s2">$ {{ valor_por_cantidad(index) }}</div>
-                    <div class="col s1" @click="eliminar(index)">
-                      <i class="material-icons">delete</i>
+                      <div class="col s4">{{ item.nombre }}</div>
+                      <div class="col s1 menu_productos_boton" @click="aumentar(index)">+</div>
+                      <div class="col s1">{{ item.cantidad }}</div>
+                      <div class="col s1 menu_productos_boton" @click="disminuir(index)">-</div>
+                      <div class="col s2">$ {{ item.price }} c/u</div>
+                      <div class="col s2">$ {{ valor_por_cantidad(index) }}</div>
+                      <div class="col s1" @click="eliminar(index)">
+                        <i class="material-icons">delete</i>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <!--  -->
-              </div>
-            </div>
-            <div class="conten_0">
-              <span class="col marron barrar vertical _1">
-                <div class="mano_negra menu_label marron_text">Resumen</div>
-              </span>
-              <span class="col marron barrar horrizontal _2"></span>
-              <span class="col marron barrar vertical _3"></span>
-              <span class="col marron barrar horrizontal boton _4"></span>
-            </div>
+
+                <div class="col s12 margin-t10 center" v-else>
+                  <p class="col s7 offset-s3 marron_text mano_negra margin-t10 t-medium">
+                    Aun no has selecionado nada,
+                    <br />! Por que no mira nuestra lista de
+                    productos !
+                  </p>
+                  <div class="col s12 margin-t5">
+                    <router-link
+                      to="/Productos"
+                      class="col s6 offset-s3 btn mano_negra marron"
+                    >Lista de productos</router-link>
+                  </div>
+                </div>
+              </li>
+              <li class="absolute barra_2 marron">
+                <h4 class="col mano_negra marron_text offset-s1">Resumen</h4>
+              </li>
+              <li class="relative barra_4 marron"></li>
+              <li class="relative barra_3 marron"></li>
+            </ul>
           </div>
-          <!--  -->
-          <div class="col s6 alegreya">
-            <div class="col s12 center">
-              <div class="col s6 offset-s3">
+
+          <div class="col m12 l6 alegreya margin-t5">
+            <div class="col m6 l12 center">
+              <div class="col m10 l6 offset-l3">
                 <img src="@/assets/girl_add_car.svg" alt srcset />
               </div>
             </div>
-            <div class="col s12 center marron_text conten">Cantidad de productos :{{ cant_item }}</div>
-            <div class="col s12 center marron_text conten">Total a pagar : {{ cant_total }}</div>
-            <div class="col s8 offset-s2 conten valign-wrapper">
-              <a class="col s5 btn marron alegreya waves-effect waves-light">Cancelar</a>
-              <a class="col s5 btn marron alegreya waves-effect waves-light">Pagar</a>
+            <div class="col m6 l12 margin-t10">
+              <div class="col s12 center marron_text">Cantidad de productos : {{ cant_item }}</div>
+              <div class="col s12 center marron_text">Total a pagar : {{ cant_total }}</div>
+              <div class="col s8 offset-s2 conten valign-wrapper margin-t5">
+                <a class="col s5 btn marron alegreya waves-effect waves-light">Cancelar</a>
+                <a class="col s5 btn marron alegreya waves-effect waves-light">Pagar</a>
+              </div>
             </div>
           </div>
         </div>
@@ -64,6 +76,7 @@
         <Footer />
       </div>
     </div>
+
     <div class="hide-on-med-and-up">
       <div class="row smoke caja">
         <div class="col s12 marron_text margin-t5">
@@ -75,6 +88,41 @@
             <div class="a marron white-text t-xx-large mano_negra">
               <div class="c">Resumen</div>
             </div>
+          </div>
+        </div>
+        <div v-if="selecion.length > 0">
+          <div class="col s10 offset-s1 conten_producto margin-t5">
+            <div
+              class="col s12 white margin-t10 center valign-wrapper alegreya marron_text"
+              v-for="(item, index) in selecion"
+              :key="item.id"
+            >
+              <div class="col s1" @click="disminuir(index)">-</div>
+              <div class="col s1">
+                <div class="relative circulo_0 marron white-text">
+                  <div class="relative t">{{ item.cantidad }}</div>
+                </div>
+              </div>
+              <div class="col s2">
+                <img src="../assets/svg/001-coffee-cup-1.svg" alt srcset />
+              </div>
+              <div class="col s4">{{ item.nombre }}</div>
+              <div class="col s1" @click="aumentar(index)">+</div>
+              <div class="col s3">$ {{ item.price }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 margin-t10 center" v-else>
+          <p class="col s7 offset-s3 marron_text mano_negra margin-t10 t-medium">
+            Aun no has selecionado nada,
+            <br />! Por que no mira nuestra lista de
+            productos !
+          </p>
+          <div class="col s12 margin-t5">
+            <router-link
+              to="/Productos"
+              class="col s6 offset-s3 btn mano_negra marron"
+            >Lista de productos</router-link>
           </div>
         </div>
         <div class="col s12 margin-t5" v-if="cant_total > 0">
@@ -118,6 +166,15 @@ export default {
         contador = contador + this.items[x].cantidad * this.items[x].price;
       }
       return contador;
+    },
+    new_list() {
+      for (var x = 0; x < this.items.length; x++) {
+        if (this.items[x].cantidad > 0) {
+          this.selecion.push(this.items[x]);
+        }
+      }
+
+      return 0;
     }
   },
 
@@ -170,55 +227,40 @@ export default {
   margin-left: 10px !important;
   font-size: xx-large;
 }
-.conten_0 {
+.relative {
   position: relative;
-  z-index: 10;
 }
-.conten_2 {
+.absolute {
   position: absolute;
-  z-index: 11;
-  width: 43%;
 }
-.conten_3 {
-  position: relative;
-  top: 90px;
-  background: blue;
-}
-.conten {
-  margin-top: 3%;
-  /* margin-left: 2% !important; */
-}
-.barrar {
-  position: relative;
-}
-
-.horrizontal {
-  width: 90%;
+.barra_1 {
+  width: 100%;
   height: 2px;
+  top: 7px;
 }
-.vertical {
+.barra_3 {
+  width: 100%;
+  height: 2px;
+  top: 2px;
+}
+.barra_2 {
   width: 2px;
-  height: 570px;
-  padding: 0px;
+  height: 600px;
+  top: -15px;
 }
-._2 {
-  top: 40px;
+.barra_4 {
+  width: 2px;
+  height: 550px;
+  left: 100%;
+  top: 5px;
 }
-._3 {
-  top: 40px;
-  height: 500px;
-}
-._4 {
-  bottom: -39px;
-}
-
 /*  */
 .conten_producto {
   height: 400px;
   overflow-y: scroll;
 }
 .conten_producto::-webkit-scrollbar {
-  width: 7px;
+  width: 5px;
 }
 
 /* Track */
@@ -255,5 +297,32 @@ export default {
 }
 .btn:hover {
   background: #6b4015;
+}
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+  .barra_1 {
+    top: 9px;
+    width: 100%;
+    height: 2px;
+  }
+  .barra_3 {
+    top: 4px;
+    width: 100%;
+    height: 2px;
+  }
+  .barra_2 {
+    width: 2px;
+    height: 350px;
+  }
+  .barra_4 {
+    top: 7px;
+    width: 2px;
+    height: 300px;
+    left: 100%;
+  }
+  .conten_producto {
+    height: 200px;
+    overflow-y: scroll;
+    margin-top: 7%;
+  }
 }
 </style>
