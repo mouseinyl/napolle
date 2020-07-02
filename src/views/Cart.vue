@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="hide-on-small-only" @loadstart="new_list">
+    <div class="hide-on-small-only">
       <div class="row">
         <Banner_white />
         <div class="col s12 valign-wrapper">
@@ -13,7 +13,7 @@
                 <div class="col s12 conten_producto">
                   <div
                     class="col s10 offset-s1 smoke center valign-wrapper alegreya marron_text producto"
-                    v-for="(item, index) of items"
+                    v-for="(item, index) of selecion"
                     :key="item.id"
                   >
                     <div class="col s1">
@@ -77,41 +77,6 @@
             </div>
           </div>
         </div>
-        <div v-if="selecion.length > 0">
-          <div class="col s10 offset-s1 conten_producto margin-t5">
-            <div
-              class="col s12 white margin-t10 center valign-wrapper alegreya marron_text"
-              v-for="(item, index) in selecion"
-              :key="item.id"
-            >
-              <div class="col s1" @click="disminuir(index)">-</div>
-              <div class="col s1">
-                <div class="relative circulo_0 marron white-text">
-                  <div class="relative t">{{ item.cantidad }}</div>
-                </div>
-              </div>
-              <div class="col s2">
-                <img src="../assets/svg/001-coffee-cup-1.svg" alt srcset />
-              </div>
-              <div class="col s4">{{ item.nombre }}</div>
-              <div class="col s1" @click="aumentar(index)">+</div>
-              <div class="col s3">$ {{ item.price }}</div>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 margin-t10 center" v-else>
-          <p class="col s7 offset-s3 marron_text mano_negra margin-t10 t-medium">
-            Aun no has selecionado nada,
-            <br />! Por que no mira nuestra lista de
-            productos !
-          </p>
-          <div class="col s12 margin-t5">
-            <router-link
-              to="/Productos"
-              class="col s6 offset-s3 btn mano_negra marron"
-            >Lista de productos</router-link>
-          </div>
-        </div>
         <div class="col s12 margin-t5" v-if="cant_total > 0">
           <router-link to="/Cart" class="col s6 offset-s3 btn mano_negra marron">Completar pago</router-link>
         </div>
@@ -153,14 +118,6 @@ export default {
         contador = contador + this.items[x].cantidad * this.items[x].price;
       }
       return contador;
-    },
-    new_list() {
-      for (var x = 0; x < this.items.length; x++) {
-        if (this.items[x].cantidad > 0) {
-          this.selecion.push(this.items[x]);
-        }
-      }
-      return 0;
     }
   },
 

@@ -5,33 +5,24 @@
       <div class="row hide-on-small-only">
         <div class="col m12 l12">
           <div class="col m2 l2 margin-t5">
-            <div class="col s12 marron_text mano_negra texto_label center">
-              Menu
-            </div>
+            <div class="col s12 marron_text mano_negra texto_label center">Menu</div>
             <div class="col s12 marron"></div>
             <div class="col s12 center margin-t10 mano_negra">
               <a
                 href="#napolle's coffees"
                 class="col s12 margin-t10 marron_text text_category"
-                >napolle's coffees</a
-              >
+              >napolle's coffees</a>
               <a
                 href="#napolle's bakery"
                 class="col s12 margin-t10 marron_text text_category"
-                >napolle's bakery</a
-              >
+              >napolle's bakery</a>
               <a
                 href="#napolle's bebidas"
                 class="col s12 margin-t10 marron_text text_category"
-                >napolle's bebidas</a
-              >
+              >napolle's bebidas</a>
             </div>
             <div class="col l12 m12 margin-t10">
-              <router-link
-                class="col s12 btn marron white-text margin-t10"
-                to="/Cart"
-                >Pagar</router-link
-              >
+              <router-link class="col s12 btn marron white-text margin-t10" to="/Cart">Pagar</router-link>
             </div>
           </div>
           <!-- -->
@@ -40,19 +31,10 @@
               <h6
                 class="col s11 offset-s1 margin-t5 mano_negra marron_text"
                 id="napolle's coffees"
-              >
-                napolle's coffees
-              </h6>
-              <div
-                class="col m4 l3 margin-t3"
-                v-for="(item, index) in items"
-                :key="item.id"
-              >
+              >napolle's coffees</h6>
+              <div class="col m4 l3 margin-t3" v-for="(item, index) in items" :key="item.id">
                 <div class="col l10 offset-l1 smoke">
-                  <div
-                    class="cantidad white-text mano_negra center"
-                    v-if="item.cantidad > 0"
-                  >
+                  <div class="cantidad white-text mano_negra center" v-if="item.cantidad > 0">
                     <div class="marron">{{ item.cantidad }}</div>
                   </div>
                   <div class="col s12">
@@ -61,24 +43,10 @@
                     </div>
                   </div>
                   <div class="col s12 margin-b5">
-                    <p class="col s12 center marron_text alegreya">
-                      {{ item.nombre }}
-                    </p>
-                    <div
-                      class="col s4 mano_negra marron_text center"
-                      @click="aumentar(index)"
-                    >
-                      +
-                    </div>
-                    <div class="col s4 center marron_text alegreya">
-                      {{ item.price }} c/u
-                    </div>
-                    <div
-                      class="col s4 mano_negra marron_text center"
-                      @click="disminuir(index)"
-                    >
-                      -
-                    </div>
+                    <p class="col s12 center marron_text alegreya">{{ item.nombre }}</p>
+                    <div class="col s4 mano_negra marron_text center" @click="aumentar(index)">+</div>
+                    <div class="col s4 center marron_text alegreya">{{ item.price }} c/u</div>
+                    <div class="col s4 mano_negra marron_text center" @click="disminuir(index)">-</div>
                   </div>
                 </div>
               </div>
@@ -86,95 +54,15 @@
               <h6
                 class="col s11 offset-s1 margin-t5 mano_negra marron_text"
                 id="napolle's bakery"
-              >
-                apolle's Bakery
-              </h6>
-              <div
-                class="col m4 l3 margin-t3"
-                v-for="(item, index) in items"
-                :key="item.id"
-              >
-                <div class="col l10 offset-l1 smoke">
-                  <div
-                    class="cantidad white-text mano_negra center"
-                    v-if="item.cantidad > 0"
-                  >
-                    <div class="marron">{{ item.cantidad }}</div>
-                  </div>
-                  <div class="col s12">
-                    <div class="col s6 offset-s3 margin-t3 circulo white">
-                      <img src="../assets/svg/005-coffee.svg" alt srcset />
-                    </div>
-                  </div>
-                  <div class="col s12 margin-b5">
-                    <p class="col s12 center marron_text alegreya">
-                      {{ item.nombre }}
-                    </p>
-                    <div
-                      class="col s4 mano_negra marron_text center"
-                      @click="aumentar(index)"
-                    >
-                      +
-                    </div>
-                    <div class="col s4 center marron_text alegreya">
-                      {{ item.price }} c/u
-                    </div>
-                    <div
-                      class="col s4 mano_negra marron_text center"
-                      @click="disminuir(index)"
-                    >
-                      -
-                    </div>
-                  </div>
-                </div>
-              </div>
+              >Napolle's Bakery</h6>
+
               <!--  -->
 
               <h6
                 class="col s11 offset-s1 margin-t5 mano_negra marron_text"
                 id="napolle's bebidas"
-              >
-                napolle's Bebidas
-              </h6>
-              <div
-                class="col m4 l3 margin-t3"
-                v-for="(item, index) in items"
-                :key="item.id"
-              >
-                <div class="col l10 offset-l1 smoke">
-                  <div
-                    class="cantidad white-text mano_negra center"
-                    v-if="item.cantidad > 0"
-                  >
-                    <div class="marron">{{ item.cantidad }}</div>
-                  </div>
-                  <div class="col s12">
-                    <div class="col s6 offset-s3 margin-t3 circulo white">
-                      <img src="../assets/svg/005-coffee.svg" alt srcset />
-                    </div>
-                  </div>
-                  <div class="col s12 margin-b5">
-                    <p class="col s12 center marron_text alegreya">
-                      {{ item.nombre }}
-                    </p>
-                    <div
-                      class="col s4 mano_negra marron_text center"
-                      @click="aumentar(index)"
-                    >
-                      +
-                    </div>
-                    <div class="col s4 center marron_text alegreya">
-                      {{ item.price }} c/u
-                    </div>
-                    <div
-                      class="col s4 mano_negra marron_text center"
-                      @click="disminuir(index)"
-                    >
-                      -
-                    </div>
-                  </div>
-                </div>
-              </div>
+              >napolle's Bebidas</h6>
+              <!--  -->
             </div>
             <!--  -->
 
@@ -186,14 +74,14 @@
         <Footer />
       </div>
     </div>
-    <div class="hide-on-med-and-up ">
-      <div class="row smoke caja ">
+    <div class="hide-on-med-and-up">
+      <div class="row smoke caja">
         <div class="col s12 marron_text margin-t5">
           <div class="col s12 t-xx-large mano_negra">Ñapolle</div>
         </div>
-        <div class="col s6 offset-s3  margin-t10">
+        <div class="col s6 offset-s3 margin-t10">
           <div class="col s12 center">
-            <div class="b  white-text t-xx-large mano_negra">.</div>
+            <div class="b white-text t-xx-large mano_negra">.</div>
             <div class="a marron white-text t-xx-large mano_negra">
               <div class="c">Menu</div>
             </div>
@@ -208,26 +96,19 @@
             <div class="col s1" @click="disminuir(index)">-</div>
             <div class="col s1">
               <div class="relative circulo_0 marron white-text">
-                <div class="relative t">
-                  {{ item.cantidad }}
-                </div>
+                <div class="relative t">{{ item.cantidad }}</div>
               </div>
             </div>
             <div class="col s2">
-              <img src="../assets/svg/001-coffee-cup-1.svg" alt="" srcset="" />
+              <img src="../assets/svg/001-coffee-cup-1.svg" alt srcset />
             </div>
             <div class="col s4">{{ item.nombre }}</div>
             <div class="col s1" @click="aumentar(index)">+</div>
             <div class="col s3">$ {{ item.price }}</div>
           </div>
         </div>
-        <div class="col s12 margin-t5 " v-if="cant_total > 0">
-          <router-link
-            to="/Cart"
-            class="col s6 offset-s3 btn mano_negra marron"
-          >
-            Completar pago
-          </router-link>
+        <div class="col s12 margin-t5" v-if="cant_total > 0">
+          <router-link to="/Cart" class="col s6 offset-s3 btn mano_negra marron">Completar pago</router-link>
         </div>
       </div>
       <navigation_bar />
@@ -245,7 +126,7 @@ export default {
   components: {
     Banner_white,
     Footer,
-    Navigation_bar,
+    Navigation_bar
   },
 
   data() {
@@ -266,16 +147,11 @@ export default {
         contador = contador + this.items[x].cantidad * this.items[x].price;
       }
       return contador;
-    },
+    }
   },
   methods: {
-    ...mapMutations([
-      "aumentar",
-      "disminuir",
-      "eliminar",
-      "valor_por_cantidad",
-    ]),
-  },
+    ...mapMutations(["aumentar", "disminuir", "eliminar", "valor_por_cantidad"])
+  }
 };
 </script>
 <style scoped>
