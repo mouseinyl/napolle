@@ -34,6 +34,12 @@
 .contenido {
   color: white;
 }
+.eslogan pre {
+  transform: translate(35%, 27%);
+}
+pre {
+  font-size: 70px;
+}
 
 @media only screen and (min-width: 600px) and (max-width: 992px) {
   .eslogan pre {
