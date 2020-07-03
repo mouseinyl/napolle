@@ -33,14 +33,16 @@ export default {
 .margin-t15 {
   margin-top: 15%;
 }
+.margin-t20 {
+  margin-top: 20%;
+}
+.margin-t25 {
+  margin-top: 25%;
+}
 
 /* fin margenes */
 .poder-relative {
   position: relative;
-}
-.absolute {
-  position: absolute;
-  height: 100%;
 }
 
 .cou {
@@ -50,6 +52,12 @@ export default {
 }
 .t-xx-large {
   font-size: xx-large;
+}
+.t-x-large {
+  font-size: x-large;
+}
+.t-large {
+  font-size: large;
 }
 .t-medium {
   font-size: medium;
@@ -88,5 +96,32 @@ img {
 }
 .smoke {
   background: whitesmoke;
+}
+@media only screen and (min-height: 811px) and (max-height: 910px) {
+  .absolute {
+    background: whitesmoke;
+    width: 100%;
+    height: 850px;
+
+    background-size: cover;
+  }
+}
+@media only screen and (min-height: 700px) and (max-height: 810px) {
+  .absolute {
+    background: whitesmoke;
+    width: 100%;
+    height: 800px;
+
+    background-size: cover;
+  }
+}
+@media only screen and (min-height: 500px) and (max-height: 700px) {
+  .absolute {
+    background: whitesmoke;
+    width: 100%;
+    height: 700px;
+
+    background-size: cover;
+  }
 }
 </style>

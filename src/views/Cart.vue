@@ -12,7 +12,7 @@
                   <div class="col s12 conten_producto margin-t10">
                     <div
                       class="col m12 l10 offset-l1 smoke center valign-wrapper alegreya marron_text producto"
-                      v-for="(item, index) of items"
+                      v-for="(item, index) of selecion"
                       :key="item.id"
                     >
                       <div class="col s1">
@@ -200,9 +200,7 @@ export default {
           var w = na(this.selecion, this.items[x]);
           if (w) {
             this.selecion.push(this.items[x]);
-            console.log("hola");
           }
-          console.log(this.selecion.length);
         }
       }
 

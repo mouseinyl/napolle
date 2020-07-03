@@ -4,7 +4,7 @@
       <banner_white />
       <div class>
         <div class="col m6 l6">
-          <div class="col m12 l10 offset-l1 empuje-t25">
+          <div class="col m12 l10 offset-l2 margin-t25">
             <div class="col m6 l6">
               <div class="col l12">
                 <img src="../assets/jugito_de_veneno.svg" alt srcset />
@@ -19,25 +19,27 @@
         </div>
         <!--  -->
         <div class="col m6 l6">
-          <div class="col m10 l7 offset-m1 offset-l3 login empuje-t10">
-            <div class="col m6 l4 marron circulo offset-l4 offset-m3 valign-wrapper center">
-              <p class="col s12 white-text mano_negra">Ñapolle</p>
+          <div class="col m10 l7 offset-m1 offset-l2 login margin-t10">
+            <div class="col s6 offset-s3 circulo_conten">
+              <div class="circulo marron valign-wrapper">
+                <p class="col s12 white-text mano_negra center t-x-large">Ñapolle</p>
+              </div>
             </div>
-            <div class="col m12 l12">
+            <div class="col m12 l12 margin-t10">
               <div class="col m10 l8 offset-l2 offset-m1">
                 <i class="poder_relativo icon_input material-icons marron_text">account_circle</i>
                 <input type="text" class="imput" />
               </div>
-              <div class="col l8 offset-l2 m10 offset-m1">
+              <div class="col l8 offset-l2 m10 offset-m1 margin-t10">
                 <i class="poder_relativo icon_input material-icons marron_text">vpn_key</i>
                 <input type="text" class="imput" />
               </div>
             </div>
-            <div class="col s12 empuje-t10">
+            <div class="col s12 margin-t10">
               <a href class="col s8 offset-s2 btn marron white-text alegreya">Iniciar</a>
               <router-link
                 to="/registro"
-                class="col s6 offset-s1 center marron_text alegreya right empuje-t5"
+                class="col s6 offset-s1 center marron_text alegreya right margin-t5"
               >Registrarse</router-link>
             </div>
           </div>
@@ -47,19 +49,51 @@
         <Footer />
       </div>
     </div>
-    <div class="show-on-small-only">holas</div>
+    <div class="hide-on-med-and-up absolute">
+      <div class="row">
+        <div class="col s12">
+          <div class="col s10 white offset-s1 margin-t25">
+            <div class="col s6 offset-s3 circulo_conten">
+              <div class="circulo marron valign-wrapper">
+                <p class="col s12 white-text mano_negra center t-large">Ñapolle</p>
+              </div>
+            </div>
+            <div class="col s12 margin-t5">
+              <div class="col s10 offset-s1 offset-m1">
+                <i class="poder_relativo icon_input material-icons marron_text">account_circle</i>
+                <input type="text" class="imput" />
+              </div>
+              <div class="col s10 offset-s1 margin-t10">
+                <i class="poder_relativo icon_input material-icons marron_text">vpn_key</i>
+                <input type="text" class="imput" />
+              </div>
+            </div>
+            <div class="col s12 margin-t10">
+              <a href class="col s8 offset-s2 btn marron white-text alegreya">Iniciar</a>
+              <router-link
+                to="/registro"
+                class="col s6 offset-s1 center marron_text alegreya right margin-t5"
+              >Registrarse</router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Navigation_bar />
+    </div>
   </div>
 </template>
 
 <script>
 import Banner_white from "@/components/Banner_white.vue";
 import Footer from "@/components/Footer.vue";
+import Navigation_bar from "../components/Navigation_bar.vue";
 import { mapState, mapMutations } from "vuex";
 export default {
   name: "Login",
   components: {
     Banner_white,
-    Footer
+    Footer,
+    Navigation_bar
   },
 
   computed: {
@@ -74,12 +108,7 @@ export default {
 .w {
   background: blue;
 }
-.empuje-t25 {
-  margin-top: 25%;
-}
-.empuje-t10 {
-  margin-top: 10%;
-}
+
 .eslogan_veneno {
   font-size: 130%;
   margin-top: 10%;
@@ -98,26 +127,23 @@ export default {
   margin-left: 30%;
 }
 .circulo {
-  margin-top: 20px;
-  height: 120px;
+  width: 125px;
+  height: 125px;
   border-radius: 50%;
+  margin: auto;
 }
-.circulo p {
-  font-size: 150%;
+
+.circulo_conten {
+  margin-top: -10%;
 }
-.poder_absoluto {
-  position: absolute;
-  width: 30%;
-  height: auto;
-  z-index: 0;
-}
+
 .poder_relativo {
   position: relative;
 }
 .icon_input {
   padding: 0px;
   margin: 0px;
-  top: 50px;
+  top: 40px;
   left: -25px;
 }
 input[type="text"]:focus {
@@ -128,5 +154,18 @@ input[type="text"]:focus {
 
 .login {
   background: whitesmoke;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 600px) {
+  .circulo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: auto;
+  }
+
+  .circulo_conten {
+    margin-top: -15%;
+  }
 }
 </style>
