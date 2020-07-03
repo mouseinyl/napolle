@@ -111,6 +111,15 @@
               <div class="col s3">$ {{ item.price }}</div>
             </div>
           </div>
+
+          <div class="col s12 margin-t10">
+            <div class="col s12 center marron_text alegreya">
+              <div class="col s6 marron_text offset-s1">Cantidad de productos :</div>
+              <div class="col s3 white marron_text">{{ cant_item }}</div>
+              <div class="col s6 marron_text offset-s1 margin-t5">Total a pagar :</div>
+              <div class="col s3 white marron_text margin-t5">{{ cant_total }}</div>
+            </div>
+          </div>
         </div>
         <div class="col s12 margin-t10 center" v-else>
           <p class="col s7 offset-s3 marron_text mano_negra margin-t10 t-medium">
@@ -126,7 +135,11 @@
           </div>
         </div>
         <div class="col s12 margin-t5" v-if="cant_total > 0">
-          <router-link to="/Cart" class="col s6 offset-s3 btn mano_negra marron">Completar pago</router-link>
+          <router-link to="/Productos" class="col s4 offset-s4 btn mano_negra marron">Cancelar</router-link>
+          <router-link
+            to="/Cart"
+            class="col s6 offset-s3 btn mano_negra marron margin-t5"
+          >Completar pago</router-link>
         </div>
       </div>
       <navigation_bar />
@@ -138,6 +151,19 @@ import Banner_white from "@/components/Banner_white.vue";
 import Footer from "@/components/Footer.vue";
 import Navigation_bar from "../components/Navigation_bar.vue";
 import { mapState, mapMutations } from "vuex";
+function na(list, elemente) {
+  var x = 0;
+  for (var i = 0; i < list.length; i++) {
+    if (list[i] === elemente) {
+      x++;
+    }
+  }
+  if (x === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 export default {
   name: "Cart",
@@ -167,10 +193,16 @@ export default {
       }
       return contador;
     },
+
     new_list() {
       for (var x = 0; x < this.items.length; x++) {
         if (this.items[x].cantidad > 0) {
-          this.selecion.push(this.items[x]);
+          var w = na(this.selecion, this.items[x]);
+          if (w) {
+            this.selecion.push(this.items[x]);
+            console.log("hola");
+          }
+          console.log(this.selecion.length);
         }
       }
 
@@ -323,6 +355,12 @@ export default {
     height: 200px;
     overflow-y: scroll;
     margin-top: 7%;
+  }
+}
+@media only screen and (min-width: 100px) and (max-width: 600px) {
+  .conten_producto {
+    height: 200px;
+    overflow-y: scroll;
   }
 }
 </style>
