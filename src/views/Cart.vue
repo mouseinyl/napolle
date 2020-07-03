@@ -77,7 +77,7 @@
       </div>
     </div>
 
-    <div class="hide-on-med-and-up">
+    <div class="absolute smoke hide-on-med-and-up">
       <div class="row smoke caja">
         <div class="col s12 marron_text margin-t5">
           <div class="col s12 t-xx-large mano_negra">Ñapolle</div>
