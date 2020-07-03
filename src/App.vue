@@ -10,7 +10,7 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {}
 };
 </script>
 <style>
@@ -30,10 +30,17 @@ export default {
 .margin-t10 {
   margin-top: 10%;
 }
+.margin-t15 {
+  margin-top: 15%;
+}
 
 /* fin margenes */
 .poder-relative {
   position: relative;
+}
+.absolute {
+  position: absolute;
+  height: 100%;
 }
 
 .cou {
@@ -46,6 +53,9 @@ export default {
 }
 .t-medium {
   font-size: medium;
+}
+.t-small {
+  font-size: small;
 }
 .row {
   margin: 0px;
