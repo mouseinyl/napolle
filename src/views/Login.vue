@@ -63,7 +63,7 @@
                 <i class="poder_relativo icon_input material-icons marron_text">account_circle</i>
                 <input type="text" class="imput" />
               </div>
-              <div class="col s10 offset-s1 margin-t10">
+              <div class="col s10 offset-s1 margin-t5">
                 <i class="poder_relativo icon_input material-icons marron_text">vpn_key</i>
                 <input type="text" class="imput" />
               </div>
