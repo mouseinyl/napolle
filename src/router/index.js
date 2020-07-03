@@ -38,6 +38,12 @@ const routes = [{
     component: () =>
       import( /* webpackChunkName: "Login" */ "../views/Perfil.vue"),
   },
+  {
+    path: "/Information",
+    name: "Information",
+    component: () =>
+      import( /* webpackChunkName: "Login" */ "../views/Information.vue"),
+  },
 ];
 
 const router = new VueRouter({
