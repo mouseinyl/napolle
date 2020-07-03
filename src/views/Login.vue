@@ -2,8 +2,8 @@
   <div>
     <div class="row hide-on-small-only">
       <banner_white />
-      <div class="">
-        <div class="col m6 l6 ">
+      <div class>
+        <div class="col m6 l6">
           <div class="col m12 l10 offset-l1 empuje-t25">
             <div class="col m6 l6">
               <div class="col l12">
@@ -18,39 +18,27 @@
           </div>
         </div>
         <!--  -->
-        <div class="col m6 l6 ">
+        <div class="col m6 l6">
           <div class="col m10 l7 offset-m1 offset-l3 login empuje-t10">
-            <div
-              class="col m6 l4 marron circulo offset-l4 offset-m3 valign-wrapper center"
-            >
+            <div class="col m6 l4 marron circulo offset-l4 offset-m3 valign-wrapper center">
               <p class="col s12 white-text mano_negra">Ñapolle</p>
             </div>
             <div class="col m12 l12">
               <div class="col m10 l8 offset-l2 offset-m1">
-                <i class="poder_relativo icon_input material-icons marron_text"
-                  >account_circle</i
-                >
-                <input type="text" class="imput" v-model="datos_user.user" />
+                <i class="poder_relativo icon_input material-icons marron_text">account_circle</i>
+                <input type="text" class="imput" />
               </div>
               <div class="col l8 offset-l2 m10 offset-m1">
-                <i class="poder_relativo icon_input material-icons marron_text"
-                  >vpn_key</i
-                >
-                <input type="text" class="imput" v-model="datos_user.pass" />
+                <i class="poder_relativo icon_input material-icons marron_text">vpn_key</i>
+                <input type="text" class="imput" />
               </div>
             </div>
             <div class="col s12 empuje-t10">
-              <a
-                href
-                @click="logeo"
-                class="col s8 offset-s2 btn marron white-text alegreya"
-                >Iniciar</a
-              >
+              <a href class="col s8 offset-s2 btn marron white-text alegreya">Iniciar</a>
               <router-link
                 to="/registro"
                 class="col s6 offset-s1 center marron_text alegreya right empuje-t5"
-                >Registrarse</router-link
-              >
+              >Registrarse</router-link>
             </div>
           </div>
         </div>
@@ -71,15 +59,15 @@ export default {
   name: "Login",
   components: {
     Banner_white,
-    Footer,
+    Footer
   },
 
   computed: {
-    ...mapState([""]),
+    ...mapState([])
   },
   methods: {
-    ...mapMutations([""]),
-  },
+    ...mapMutations([])
+  }
 };
 </script>
 <style scoped>
