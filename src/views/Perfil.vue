@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="hide-on-small-only">
-      <Banner_white />
+      <the-banner-white />
       <div class="row hide-on-small-only">
         <div class="col l12 m12">
           <div class="col l7 m10 offset-l2 offset-m1 smoke margin-t5 alegreya marron_text">
@@ -64,7 +64,7 @@
         </div>
       </div>
       <div class="cou">
-        <Footer />
+        <the-footer />
       </div>
     </div>
     <div class="absolute smoke hide-on-med-and-up">
@@ -103,20 +103,20 @@
           </div>
         </div>
       </div>
+      <the-navigation-bar />
     </div>
-    <Navigation_bar />
   </div>
 </template>
 <script>
-import Banner_white from "../components/Banner_white.vue";
-import Footer from "../components/Footer.vue";
-import Navigation_bar from "../components/Navigation_bar.vue";
+import TheNavigationBar from "../components/Compartidos/TheNavigationBar.vue";
+import TheFooter from "../components/Compartidos/TheFooter.vue";
+import TheBannerWhite from "../components/Compartidos/TheBannerWhite.vue";
 export default {
   name: "Perfil",
   components: {
-    Banner_white,
-    Footer,
-    Navigation_bar
+    TheBannerWhite,
+    TheFooter,
+    TheNavigationBar
   },
   data() {
     return {

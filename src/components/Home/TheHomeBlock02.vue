@@ -63,7 +63,7 @@
 </template>
 <script>
 export default {
-  name: "bloque_2"
+  name: "TheHomeBlock02"
 };
 </script>
 

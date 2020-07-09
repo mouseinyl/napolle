@@ -14,7 +14,7 @@
         </div>
         <div class="col s3 center">
           <router-link to="/Productos">
-            <img src="../assets/carrito-de-compras.svg" style="width:25%" />
+            <img src="../../assets/carrito-de-compras.svg" style="width:25%" />
           </router-link>
         </div>
         <div class="col s3 center">
@@ -28,7 +28,7 @@
 </template>
 <script>
 export default {
-  name: "Navigation_bar"
+  name: "TheNavigationBar"
 };
 </script>
 <style scoped>

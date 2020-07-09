@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="hide-on-small-only">
-      <Banner_white />
+      <the-banner-white />
       <div class="row hide-on-small-only">
         <div class="col m12 l12">
           <div class="col m2 l2 margin-t5">
@@ -71,7 +71,7 @@
         </div>
       </div>
       <div class="cou">
-        <Footer />
+        <the-footer />
       </div>
     </div>
 
@@ -112,22 +112,22 @@
           <router-link to="/Cart" class="col s6 offset-s3 btn mano_negra marron">Completar pago</router-link>
         </div>
       </div>
-      <navigation_bar />
+      <the-navigation-bar />
     </div>
   </div>
 </template>
 <script>
-import Banner_white from "@/components/Banner_white.vue";
-import Footer from "@/components/Footer.vue";
-import Navigation_bar from "../components/Navigation_bar.vue";
+import TheNavigationBar from "../components/Compartidos/TheNavigationBar.vue";
+import TheFooter from "../components/Compartidos/TheFooter.vue";
+import TheBannerWhite from "../components/Compartidos/TheBannerWhite.vue";
 import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "Productos",
   components: {
-    Banner_white,
-    Footer,
-    Navigation_bar
+    TheBannerWhite,
+    TheFooter,
+    TheNavigationBar
   },
 
   data() {

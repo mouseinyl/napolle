@@ -2,7 +2,7 @@
   <div class="row">
     <div class="conten">
       <div class="cortina maroon">
-        <banner />
+        <TheBanner />
         <div class="col s6 eslogan">
           <pre class="mano_negra white-text">
             "Mas de una 
@@ -18,7 +18,7 @@
 
 <style scoped>
 .conten {
-  background-image: url("../assets/cafe-devocion.jpg");
+  background-image: url("../../assets/cafe-devocion.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -54,12 +54,12 @@ pre {
 
 
 <script>
-import banner from "@/components/Banner.vue";
+import TheBanner from "../Compartidos/TheBanner";
 
 export default {
-  name: "bloque_1",
+  name: "TheHomeBlock01",
   components: {
-    banner
+    TheBanner
   },
 
   data() {

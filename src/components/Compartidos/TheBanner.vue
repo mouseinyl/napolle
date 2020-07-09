@@ -70,7 +70,7 @@ Vue.directive("scroll", {
 });
 
 export default {
-  name: "banner",
+  name: "TheBanner",
 
   data: function() {
     return {

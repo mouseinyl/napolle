@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row hide-on-small-only">
-      <banner_white />
+      <the-banner-white />
       <div class>
         <div class="col m6 l6">
           <div class="col m12 l10 offset-l2 margin-t25">
@@ -46,7 +46,7 @@
         </div>
       </div>
       <div class="cou">
-        <Footer />
+        <the-footer />
       </div>
     </div>
     <div class="hide-on-med-and-up absolute">
@@ -78,22 +78,22 @@
           </div>
         </div>
       </div>
-      <Navigation_bar />
+      <the-navigation-bar />
     </div>
   </div>
 </template>
 
 <script>
-import Banner_white from "@/components/Banner_white.vue";
-import Footer from "@/components/Footer.vue";
-import Navigation_bar from "../components/Navigation_bar.vue";
+import TheNavigationBar from "../components/Compartidos/TheNavigationBar.vue";
+import TheFooter from "../components/Compartidos/TheFooter.vue";
+import TheBannerWhite from "../components/Compartidos/TheBannerWhite.vue";
 import { mapState, mapMutations } from "vuex";
 export default {
   name: "Login",
   components: {
-    Banner_white,
-    Footer,
-    Navigation_bar
+    TheBannerWhite,
+    TheFooter,
+    TheNavigationBar
   },
 
   computed: {

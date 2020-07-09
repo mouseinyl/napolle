@@ -45,16 +45,17 @@
         </div>
       </div>
     </div>
-    <Navigation_bar />
+    <the-navigation-bar />
   </div>
 </template>
 
 <script>
-import Navigation_bar from "../components/Navigation_bar.vue";
+import TheNavigationBar from "../components/Compartidos/TheNavigationBar.vue";
+
 export default {
   name: "Information",
   components: {
-    Navigation_bar
+    TheNavigationBar
   }
 };
 </script>

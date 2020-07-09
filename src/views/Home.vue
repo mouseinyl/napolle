@@ -2,59 +2,48 @@
   <div>
     <div class="hide-on-small-only home">
       <div class>
-        <bloque_1 />
-        <bloque_2 />
-        <Footer />
+        <the-home-block01 />
+        <the-home-block02 />
+        <TheFooter />
       </div>
     </div>
     <div class="hide-on-med-and-up">
       <div class="row">
         <div class="col s12 smoke caja">
-          <div class="col s10 offset-s1 margin-t10 ">
-            <div class="col s12  center">
-              <img
-                src="../assets/local_coffe.png"
-                class="circulo"
-                alt=""
-                srcset=""
-              />
+          <div class="col s10 offset-s1 margin-t10">
+            <div class="col s12 center">
+              <img src="../assets/local_coffe.png" class="circulo" alt srcset />
             </div>
           </div>
-          <div
-            class="col s12 marron_text center mano_negra t-xx-large margin-t5"
-          >
-            Ñapolle
-          </div>
+          <div class="col s12 marron_text center mano_negra t-xx-large margin-t5">Ñapolle</div>
           <div class="fixed_powed img_2_pos center">
-            <div class="col s11 ">
-              <img src="../assets/chica_sentada.svg" alt="" />
+            <div class="col s11">
+              <img src="../assets/chica_sentada.svg" alt />
             </div>
           </div>
         </div>
       </div>
-
-      <Navigation_bar />
+      <the-navigation-bar />
     </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import banner from "@/components/Banner.vue";
-import bloque_1 from "@/components/block_1.vue";
-import bloque_2 from "@/components/block_2.vue";
-import Footer from "@/components/Footer.vue";
-import Navigation_bar from "../components/Navigation_bar.vue";
-
+import TheBanner from "../components/Compartidos/TheBanner.vue";
+import TheHomeBlock01 from "../components/Home/TheHomeBlock01.vue";
+import TheHomeBlock02 from "../components/Home/TheHomeBlock02";
+import TheFooter from "../components/Compartidos/TheFooter.vue";
+import TheNavigationBar from "../components/Compartidos/TheNavigationBar.vue";
+import TheBannerWhite from "../components/Compartidos/TheBannerWhite.vue";
 export default {
   name: "Home",
   components: {
-    banner,
-    bloque_1,
-    bloque_2,
-    Footer,
-    Navigation_bar,
-  },
+    TheBanner,
+    TheHomeBlock01,
+    TheHomeBlock02,
+    TheFooter,
+    TheNavigationBar
+  }
 };
 </script>
 <style scoped>

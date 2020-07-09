@@ -55,7 +55,7 @@
 
 <script>
 export default {
-  name: "Banner_white",
+  name: "TheBannerWhite",
   data() {
     return {
       initied: true

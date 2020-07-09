@@ -1,7 +1,7 @@
 <template>
   <div @loadstart="new_list">
     <div class="hide-on-small-only">
-      <Banner_white />
+      <the-banner-white />
       <div class="row">
         <div class="col s12">
           <div class="col m12 l6">
@@ -47,11 +47,11 @@
                   </div>
                 </div>
               </li>
-              <li class="absolute barra_2 marron">
+              <li class="marron absolute barra_2">
                 <h4 class="col mano_negra marron_text offset-s1">Resumen</h4>
               </li>
-              <li class="relative barra_4 marron"></li>
-              <li class="relative barra_3 marron"></li>
+              <li class="relative barra_4 marron">2</li>
+              <li class="relative barra_3 marron">33</li>
             </ul>
           </div>
 
@@ -73,7 +73,7 @@
         </div>
       </div>
       <div class="cou">
-        <Footer />
+        <the-footer />
       </div>
     </div>
 
@@ -142,14 +142,14 @@
           >Completar pago</router-link>
         </div>
       </div>
-      <navigation_bar />
+      <the-navigation-bar />
     </div>
   </div>
 </template>
 <script>
-import Banner_white from "@/components/Banner_white.vue";
-import Footer from "@/components/Footer.vue";
-import Navigation_bar from "../components/Navigation_bar.vue";
+import TheBannerWhite from "../components/Compartidos/TheBannerWhite.vue";
+import TheFooter from "../components/Compartidos/TheFooter.vue";
+import TheNavigationBar from "../components/Compartidos/TheNavigationBar.vue";
 import { mapState, mapMutations } from "vuex";
 function na(list, elemente) {
   var x = 0;
@@ -168,9 +168,9 @@ function na(list, elemente) {
 export default {
   name: "Cart",
   components: {
-    Banner_white,
-    Footer,
-    Navigation_bar
+    TheBannerWhite,
+    TheFooter,
+    TheNavigationBar
   },
   data() {
     return {

@@ -28,7 +28,7 @@
 </template>
 <script>
 export default {
-  name: "Footer"
+  name: "TheFooter"
 };
 </script>
 <style scoped>
