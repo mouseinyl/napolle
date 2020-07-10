@@ -2,7 +2,7 @@
   <div class="row">
     <div class="conten">
       <div class="cortina maroon">
-        <TheBanner />
+        <TheBanner :color="banner_white" :scroll="true" />
         <div class="col s6 eslogan">
           <pre class="mano_negra white-text">
             "Mas de una 
@@ -54,7 +54,7 @@ pre {
 
 
 <script>
-import TheBanner from "../Compartidos/TheBanner";
+import TheBanner from "../Compartidos/Banner/TheBanner.vue";
 
 export default {
   name: "TheHomeBlock01",

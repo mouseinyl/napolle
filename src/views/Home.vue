@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import TheBanner from "../components/Compartidos/TheBanner.vue";
 import TheHomeBlock01 from "../components/Home/TheHomeBlock01.vue";
 import TheHomeBlock02 from "../components/Home/TheHomeBlock02";
 import TheFooter from "../components/Compartidos/TheFooter.vue";
@@ -38,7 +37,6 @@ import TheBannerWhite from "../components/Compartidos/TheBannerWhite.vue";
 export default {
   name: "Home",
   components: {
-    TheBanner,
     TheHomeBlock01,
     TheHomeBlock02,
     TheFooter,

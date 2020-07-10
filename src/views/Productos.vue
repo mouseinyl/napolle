@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="hide-on-small-only">
-      <the-banner-white />
+      <the-banner />
       <div class="row hide-on-small-only">
         <div class="col m12 l12">
           <div class="col m2 l2 margin-t5">
@@ -119,13 +119,13 @@
 <script>
 import TheNavigationBar from "../components/Compartidos/TheNavigationBar.vue";
 import TheFooter from "../components/Compartidos/TheFooter.vue";
-import TheBannerWhite from "../components/Compartidos/TheBannerWhite.vue";
+import TheBanner from "../components/Compartidos/Banner/TheBanner.vue";
 import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "Productos",
   components: {
-    TheBannerWhite,
+    TheBanner,
     TheFooter,
     TheNavigationBar
   },
