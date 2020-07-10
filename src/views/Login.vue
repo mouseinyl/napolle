@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row hide-on-small-only">
-      <the-banner-white />
+      <the-banner :color="'banner_marron'" :scroll="false" />
       <div class>
         <div class="col m6 l6">
           <div class="col m12 l10 offset-l2 margin-t25">
@@ -86,12 +86,12 @@
 <script>
 import TheNavigationBar from "../components/Compartidos/TheNavigationBar.vue";
 import TheFooter from "../components/Compartidos/TheFooter.vue";
-import TheBannerWhite from "../components/Compartidos/TheBannerWhite.vue";
+import TheBanner from "../components/Compartidos/Banner/TheBanner.vue";
 import { mapState, mapMutations } from "vuex";
 export default {
   name: "Login",
   components: {
-    TheBannerWhite,
+    TheBanner,
     TheFooter,
     TheNavigationBar
   },

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="hide-on-small-only">
-      <the-banner-white />
+      <the-banner :color="'banner_marron'" :scroll="false" />
       <div class="row hide-on-small-only">
         <div class="col l12 m12">
           <div class="col l7 m10 offset-l2 offset-m1 smoke margin-t5 alegreya marron_text">
@@ -110,11 +110,11 @@
 <script>
 import TheNavigationBar from "../components/Compartidos/TheNavigationBar.vue";
 import TheFooter from "../components/Compartidos/TheFooter.vue";
-import TheBannerWhite from "../components/Compartidos/TheBannerWhite.vue";
+import TheBanner from "../components/Compartidos/Banner/TheBanner.vue";
 export default {
   name: "Perfil",
   components: {
-    TheBannerWhite,
+    TheBanner,
     TheFooter,
     TheNavigationBar
   },

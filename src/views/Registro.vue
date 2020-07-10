@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="hide-on-small-only">
-      <the-banner-white />
+      <the-banner :color="'banner_marron'" :scroll="false" />
       <div class="row">
         <div class="col m6 l6">
           <div class="col m10 l10 offset-l2 margin-t25">
@@ -102,11 +102,11 @@
 <script>
 import TheNavigationBar from "../components/Compartidos/TheNavigationBar.vue";
 import TheFooter from "../components/Compartidos/TheFooter.vue";
-import TheBannerWhite from "../components/Compartidos/TheBannerWhite.vue";
+import TheBanner from "../components/Compartidos/Banner/TheBanner.vue";
 export default {
   name: "Registro",
   components: {
-    TheBannerWhite,
+    TheBanner,
     TheFooter,
     TheNavigationBar
   }

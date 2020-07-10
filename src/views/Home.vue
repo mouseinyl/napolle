@@ -33,7 +33,7 @@ import TheHomeBlock01 from "../components/Home/TheHomeBlock01.vue";
 import TheHomeBlock02 from "../components/Home/TheHomeBlock02";
 import TheFooter from "../components/Compartidos/TheFooter.vue";
 import TheNavigationBar from "../components/Compartidos/TheNavigationBar.vue";
-import TheBannerWhite from "../components/Compartidos/TheBannerWhite.vue";
+
 export default {
   name: "Home",
   components: {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="hide-on-small-only">
-      <the-banner />
+      <the-banner :color="'banner_marron'" :scroll="false" />
       <div class="row hide-on-small-only">
         <div class="col m12 l12">
           <div class="col m2 l2 margin-t5">
