@@ -2,7 +2,7 @@
   <div class="row">
     <div class="conten">
       <div class="cortina maroon">
-        <TheBanner :color="banner_white" :scroll="true" />
+        <TheBanner :color="'banner_white'" :scroll="true" />
         <div class="col s6 eslogan">
           <pre class="mano_negra white-text">
             "Mas de una 
@@ -63,9 +63,7 @@ export default {
   },
 
   data() {
-    return {
-      color_1: "background:#523110;"
-    };
+    return {};
   }
 };
 </script>

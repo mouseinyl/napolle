@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="navbar-fixed">
-      <nav v-scroll="handleScroll" class="transparent mano_negra" :class="[color]">
+    <div class="navbar-fixed hide-on-small-only">
+      <nav v-scroll="handleScroll" class="transparent mano_negra" :class="[color_state]">
         <div class="nav-wrappe">
           <a href="#" class="brand-logo p">Ñapole</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down mg-8-left">
@@ -79,16 +79,23 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      initied: false,
+      color_state: this.color // color inicializado
+    };
   },
   methods: {
     handleScroll: function(evt, el) {
       if (this.scroll) {
+        //se ejecuta si se permite la ejecucion de funcion
         if (window.scrollY > 800) {
-          this.color = "banner_marron";
+          this.color_state = "banner_marron";
         } else {
-          this.color = "banner_white";
+          this.color_state = "banner_white";
         }
+      } else {
+        //se ejecuta color proporcionado si el proms scroll es false
+        this.color_state = this.color;
       }
     }
   }
