@@ -1,16 +1,33 @@
 <template>
   <div id="app">
-    <router-view />
+    <div v-if="!loading">
+      <router-view />
+    </div>
+    <div v-else>
+      <the-loading />
+    </div>
   </div>
 </template>
 <script>
+import { mapActions, mapGetters } from "vuex";
+import TheLoading from "./components/Compartidos/TheLoading.vue";
 export default {
   name: "app",
-
+  components: {
+    TheLoading
+  },
   data() {
     return {};
   },
-  methods: {}
+  computed: {
+    ...mapGetters(["loading"])
+  },
+  methods: {
+    ...mapActions(["carga"])
+  },
+  mounted() {
+    this.carga();
+  }
 };
 </script>
 <style>

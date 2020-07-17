@@ -80,6 +80,7 @@ export default new Vuex.Store({
       },
     ],
 
+
     datos_user: {
       name: "",
       last: null,
@@ -102,11 +103,6 @@ export default new Vuex.Store({
       if (pan.cantidad > 0) {
         return pan.cantidad--;
       }
-    },
-    eliminar(state, index) {
-      alert(index);
-      var pan = state.items;
-      pan.splice(index, 1);
     },
     valor_por_cantidad(state, index) {
       var pan = state.items[index];

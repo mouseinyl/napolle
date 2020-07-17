@@ -203,13 +203,16 @@ export default {
           }
         }
       }
-
       return 0;
     }
   },
 
   methods: {
-    ...mapMutations(["aumentar", "disminuir", "eliminar", "valor_por_cantidad"])
+    ...mapMutations(["aumentar", "disminuir", "valor_por_cantidad"]),
+    eliminar(index) {
+      alert(index);
+      this.selecion.splice(index, 1);
+    }
   }
 };
 </script>
