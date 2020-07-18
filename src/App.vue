@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div v-if="!loading">
+    <div v-if="!espera">
       <router-view />
     </div>
     <div v-else>
@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters,mapState } from "vuex";
 import TheLoading from "./components/Compartidos/TheLoading.vue";
 export default {
   name: "app",
@@ -20,13 +20,13 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["loading"])
+    ...mapState(["espera"]),
   },
   methods: {
-    ...mapActions(["carga"])
+    ...mapActions(["recuperando"])
   },
   mounted() {
-    this.carga();
+    this.recuperando();
   }
 };
 </script>

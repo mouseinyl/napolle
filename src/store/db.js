@@ -5,4 +5,4 @@ export default firebase
     .initializeApp({
         databaseURL: 'https://napolle-3719b.firebaseio.com'
     })
-    .database()
+    .database().ref("items/items")
