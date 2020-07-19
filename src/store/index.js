@@ -9,9 +9,9 @@ import db from "./db.js"
 export default new Vuex.Store({
   state: {
     items: [],
+    selecion: [],
     espera: false
   },
-
   mutations: {
     cargando(state, dato) {
       state.items = dato
@@ -35,6 +35,7 @@ export default new Vuex.Store({
       var pan = state.items[index];
       return pan.cantidad * pan.price;
     },
+
   },
   actions: {
     recuperando({
