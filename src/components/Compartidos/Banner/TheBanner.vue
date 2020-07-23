@@ -18,9 +18,9 @@
               <i class="material-icons">account_circle</i>
               <div class="conten">
                 <ul class="chill alegreya">
-                  <router-link class="item tra" to="/Login" v-if="initied == false">Iniciar secion</router-link>
-                  <router-link class="item" to="/Perfil" v-if="initied == true">perfil</router-link>
-                  <router-link class="item" to="/" v-if="initied == true">cerrar cesion</router-link>
+                  <router-link class="item tra" to="/Login" v-if="signin == false">Iniciar secion</router-link>
+                  <router-link class="item" to="/Perfil" v-if="signin == true">perfil</router-link>
+                  <p class="item" v-if="signin == true" @click="outsign">cerrar cesion</p>
                 </ul>
               </div>
             </li>
@@ -56,36 +56,46 @@
 <script>
 import Vue from "vue";
 Vue.directive("scroll", {
-  inserted: function(el, binding) {
-    let f = function(evt) {
+  inserted: function (el, binding) {
+    let f = function (evt) {
       if (binding.value(evt, el)) {
         window.removeEventListener("scroll", f);
       }
     };
     window.addEventListener("scroll", f);
-  }
+  },
 });
+import { mapState, mapMutations } from "vuex";
+import { auth } from "@/store/firebase.js";
 export default {
   name: "TheBanner",
   props: {
     color: {
       type: String,
-      requiere: true
+      requiere: true,
     },
     scroll: {
       default: false,
       type: Boolean,
-      requiere: true
-    }
+      requiere: true,
+    },
   },
   data() {
     return {
-      initied: false,
-      color_state: this.color // color inicializado
+      color_state: this.color, // color inicializado
     };
   },
+  computed: {
+    ...mapState(["signin"]),
+  },
   methods: {
-    handleScroll: function(evt, el) {
+    ...mapMutations(["onsignin"]),
+    outsign() {
+      //   // [START signout]
+      auth.signOut();
+      this.onsignin(false);
+    },
+    handleScroll: function (evt, el) {
       if (this.scroll) {
         //se ejecuta si se permite la ejecucion de funcion
         if (window.scrollY > 800) {
@@ -97,8 +107,8 @@ export default {
         //se ejecuta color proporcionado si el proms scroll es false
         this.color_state = this.color;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
