@@ -1,5 +1,6 @@
 <template>
-  <div class="row footer">
+  <div class="row footer hide-on-small-only">
+    ">
     <div class="col s12 white">
       <div class="col s10 offset-s1">
         <div class="col s12 alegreya valign-wrapper marron_text">
@@ -28,7 +29,7 @@
 </template>
 <script>
 export default {
-  name: "TheFooter"
+  name: "TheFooter",
 };
 </script>
 <style scoped>
