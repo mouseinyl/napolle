@@ -9,12 +9,12 @@
   </div>
 </template>
 <script>
-import { mapActions, mapGetters,mapState } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 import TheLoading from "./components/Compartidos/TheLoading.vue";
 export default {
   name: "app",
   components: {
-    TheLoading
+    TheLoading,
   },
   data() {
     return {};
@@ -23,11 +23,11 @@ export default {
     ...mapState(["espera"]),
   },
   methods: {
-    ...mapActions(["recuperando"])
+    ...mapActions(["recuperando"]),
   },
   mounted() {
     this.recuperando();
-  }
+  },
 };
 </script>
 <style>
@@ -41,6 +41,9 @@ export default {
   src: url("./assets/font/alegreya/Alegreya-Bold.otf") format("opentype");
 }
 /* margenes */
+.margin-t3 {
+  margin-top: 3%;
+}
 .margin-t5 {
   margin-top: 5%;
 }
@@ -109,6 +112,9 @@ img {
   color: #613a13;
 }
 .btn:hover {
+  background: #6b4015;
+}
+.btn:focus {
   background: #6b4015;
 }
 .smoke {

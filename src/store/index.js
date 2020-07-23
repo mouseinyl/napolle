@@ -2,15 +2,21 @@ import Vue from "vue";
 import Vuex from "vuex";
 Vue.use(Vuex);
 ////////////////////////////////////////////////////////////////////////
-import firebase from "firebase/app";
-import db from "./db.js"
+
+import {
+  db,
+  items,
+  auth
+} from "./firebase.js"
+
 /////////////////////////////////////////////////////////////////////////
 
 export default new Vuex.Store({
   state: {
     items: [],
     selecion: [],
-    espera: false
+    espera: false,
+    signin: false
   },
   mutations: {
     cargando(state, dato) {
@@ -18,6 +24,10 @@ export default new Vuex.Store({
     },
     estado(state, estado) {
       state.espera = estado
+    },
+    onsignin(state, estado) {
+      console.log("aqui")
+      state.signin = estado;
     },
     aumentar(state, index) {
       var pan = state.items[index];
@@ -42,7 +52,7 @@ export default new Vuex.Store({
       commit
     }) { //recuperandos datos lista de productos
       commit("estado", true)
-      db.once('value', snapshot => {
+      items.once('value', snapshot => {
         const documents = snapshot.val();
         commit("cargando", documents);
         commit("estado", false)
