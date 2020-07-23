@@ -61,9 +61,9 @@
                 <h4 class="col mano_negra marron_text offset-s1">Resumen</h4>
               </li>
 
-              <li class="relative barra_4 marron">2</li>
+              <li class="relative barra_4 marron"></li>
 
-              <li class="relative barra_3 marron">33</li>
+              <li class="relative barra_3 marron"></li>
             </ul>
           </div>
 
@@ -74,7 +74,7 @@
               </div>
             </div>
 
-            <div class="col m6 l12 margin-t10">
+            <div class="col m6 l12 margin-t10" v-if="selecion.length>0">
               <div class="col s12 center marron_text">Cantidad de productos : {{ cant_item }}</div>
 
               <div class="col s12 center marron_text">Total a pagar : {{ cant_total }}</div>
@@ -294,7 +294,8 @@ export default {
 .t {
   top: -2px;
 }
-</style><style scoped>
+</style>
+<style scoped>
 .menu_label {
   margin-top: 5px;
   margin-left: 10px !important;
@@ -325,6 +326,7 @@ export default {
   width: 2px;
   height: 600px;
   top: -15px;
+  background: #523110 !important;
 }
 
 .barra_4 {
