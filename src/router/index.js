@@ -19,10 +19,7 @@ const routes = [{
     path: "/Cart",
     name: "Cart",
     component: () => import( /* webpackChunkName: "Cart" */ "../views/Cart.vue"),
-    beforeRouteUpdate: (to, from, next) => {
-      console.log(`Updating slug `)
-      next() //make sure you always call next()
-    },
+
   },
   {
     path: "/Login",

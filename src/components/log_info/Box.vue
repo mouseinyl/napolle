@@ -88,7 +88,19 @@ export default {
   },
   methods: {
     ...mapMutations(["onsignin"]),
-    Registro() {},
+    Registro() {
+      auth
+        .createUserWithEmailAndPassword(this.User, this.Pass)
+        .then(function () {
+          this.onsignin(true);
+        })
+        .catch(function (error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // ...
+        });
+    },
     Login() {
       auth
         .signInWithEmailAndPassword(this.User, this.Pass)
