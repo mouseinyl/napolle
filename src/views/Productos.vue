@@ -137,6 +137,7 @@ export default {
     ...mapState(["items"]),
     cant_item() {
       var contador = 0;
+   
       for (var x = 0; x < this.items.length; x++) {
         contador = contador + this.items[x].cantidad;
       }

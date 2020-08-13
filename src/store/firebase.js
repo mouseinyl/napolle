@@ -22,7 +22,7 @@ const auth = firebase.auth();
 const db = firebase.database();
 
 // referencias database
-const items = db.ref("items/items")
+const items = db.ref("items")
 
 
 // export
