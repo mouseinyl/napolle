@@ -21,8 +21,8 @@
                 class="col s12 margin-t10 marron_text text_category"
               >napolle's bebidas</a>
             </div>
-            <div class="col l12 m12 margin-t10">
-              <router-link class="col s12 btn marron white-text margin-t10" to="/Cart">Pagar</router-link>
+            <div class="col l12 m12 margin-t10" v-if="cant_total > 0">
+              <button class="col s12 btn marron white-text margin-t10" to="/Cart" v-on:click="list_shop">Pagar</button>
             </div>
           </div>
           <!-- -->
@@ -32,7 +32,7 @@
                 class="col s11 offset-s1 margin-t5 mano_negra marron_text"
                 id="napolle's coffees"
               >napolle's coffees</h6>
-              <div class="col m4 l3 margin-t3" v-for="(item, index) in items" :key="item.id">
+              <div class="col m4 l3 margin-t3" v-for="(item, index) in productos[0]" :key="item.id">
                 <div class="col l10 offset-l1 smoke">
                   <div class="cantidad white-text mano_negra center" v-if="item.cantidad > 0">
                     <div class="marron">{{ item.cantidad }}</div>
@@ -43,10 +43,10 @@
                     </div>
                   </div>
                   <div class="col s12 margin-b5">
-                    <p class="col s12 center marron_text alegreya">{{ item.nombre }}</p>
-                    <div class="col s4 mano_negra marron_text center" @click="aumentar(index)">+</div>
-                    <div class="col s4 center marron_text alegreya">{{ item.price }} c/u</div>
-                    <div class="col s4 mano_negra marron_text center" @click="disminuir(index)">-</div>
+                    <p class="col s12 center marron_text alegreya">{{ item.name }}</p>
+                    <div class="col s4 mano_negra marron_text center" @click="aumentar(index,productos[0])">+</div>
+                    <div class="col s4 center marron_text alegreya">{{ item.precio }} c/u</div>
+                    <div class="col s4 mano_negra marron_text center" @click="disminuir(index,productos[0])">-</div>
                   </div>
                 </div>
               </div>
@@ -57,7 +57,7 @@
               >Napolle's Bakery</h6>
 
               <!--  -->
-
+               
               <h6
                 class="col s11 offset-s1 margin-t5 mano_negra marron_text"
                 id="napolle's bebidas"
@@ -91,10 +91,10 @@
         <div class="col s10 offset-s1 conten_producto margin-t5">
           <div
             class="col s12 white margin-t10 center valign-wrapper alegreya marron_text producto"
-            v-for="(item, index) in items"
+            v-for="(item, index) in productos[0]"
             :key="item.id"
           >
-            <div class="col s1" @click="disminuir(index)">-</div>
+            <div class="col s1" @click="disminuir(index,productos[0])">-</div>
             <div class="col s1">
               <div class="relative circulo_0 marron white-text">
                 <div class="relative t">{{ item.cantidad }}</div>
@@ -103,13 +103,13 @@
             <div class="col s2">
               <img src="../assets/svg/001-coffee-cup-1.svg" alt srcset />
             </div>
-            <div class="col s4">{{ item.nombre }}</div>
-            <div class="col s1" @click="aumentar(index)">+</div>
-            <div class="col s3">$ {{ item.price }}</div>
+            <div class="col s4">{{ item.name }}</div>
+            <div class="col s1" @click="aumentar(index,productos[0])">+</div>
+            <div class="col s3">$ {{ item.precio }}</div>
           </div>
         </div>
-        <div class="col s12 margin-t5" v-if="cant_total > 0">
-          <router-link to="/Cart" class="col s6 offset-s3 btn mano_negra marron">Completar pago</router-link>
+        <div class="col s12 margin-t5" v-if="cant_total > 0" >
+          <button  class="col s6 offset-s3 btn mano_negra marron" v-on:click="list_shop">Completar pago</button>
         </div>
       </div>
       <the-navigation-bar />
@@ -120,40 +120,47 @@
 import TheNavigationBar from "../components/Compartidos/TheNavigationBar.vue";
 import TheFooter from "../components/Compartidos/TheFooter.vue";
 import TheBanner from "../components/Compartidos/Banner/TheBanner.vue";
+
 import { mapState, mapMutations } from "vuex";
+import {produ_funcion} from "@/mixin/productos-fuccion.js"
 
 export default {
   name: "Productos",
+  mixins:[produ_funcion],
   components: {
     TheBanner,
     TheFooter,
     TheNavigationBar
   },
 
+ beforeEnter: (to, from, next) => {
+   console.log("hola")
+ },
   data() {
-    return {};
+    return {
+      productos:[this.$store.state.databaseM.items.coffes]
+    };
   },
-  computed: {
-    ...mapState(["items"]),
-    cant_item() {
-      var contador = 0;
-   
-      for (var x = 0; x < this.items.length; x++) {
-        contador = contador + this.items[x].cantidad;
-      }
-      return contador;
-    },
-    cant_total() {
-      var contador = 0;
-      for (var x = 0; x < this.items.length; x++) {
-        contador = contador + this.items[x].cantidad * this.items[x].price;
-      }
-      return contador;
-    }
+  computed:{
+    
   },
   methods: {
-    ...mapMutations(["aumentar", "disminuir", "eliminar", "valor_por_cantidad"])
-  }
+    list_shop(){
+      var tem=[];
+      for (var x=0;x<this.productos.length;x++){
+        for(const a of this.productos[x]){
+            if(a.cantidad > 0){
+              tem.push(a)
+            }   
+        }
+      }
+      console.log(tem)
+      this.$store.commit("databaseM/cargar_list_temp",tem);
+      this.$router.push("/Cart")
+    }
+  },
+  
+
 };
 </script>
 <style scoped>
