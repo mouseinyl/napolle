@@ -22,12 +22,12 @@ const auth = firebase.auth();
 const db = firebase.database();
 
 // referencias database
-const items = db.ref("items")
+// const  refcoffes = db.ref("items/coffes")
 
 
 // export
 export {
     db,
     auth,
-    items
+   
 }
