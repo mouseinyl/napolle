@@ -1,15 +1,16 @@
 <template>
   <div id="app">
-    <div v-if="!espera">
-      <router-view />
-    </div>
-    <div v-else>
+     <div v-if="loadding">
       <the-loading />
     </div>
+    <div v-else>
+      <router-view />
+    </div>
+   
   </div>
 </template>
 <script>
-import { mapActions, mapGetters, mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 import TheLoading from "./components/Compartidos/TheLoading.vue";
 export default {
   name: "app",
@@ -17,17 +18,31 @@ export default {
     TheLoading,
   },
   data() {
-    return {};
+    return {
+      
+    };
   },
-  computed: {
-    ...mapState(["espera"]),
+  computed:{
+      ...mapState("generalM",['loadding']),
+      
   },
+
   methods: {
-    ...mapActions(["recuperando"]),
+     carga(){
+      this.$store.dispatch("databaseM/getItems")
+    }
   },
   mounted() {
-    this.recuperando();
+   this.carga()
   },
+  // methods:{
+  //   carga(){
+  //     console.log("hola")
+  //     // this.$store.dispatch("databaseM")
+  //       // console.log(this.$store.commit('generalM/Isloadding'))
+  //     }
+  // },
+  
 };
 </script>
 <style>
