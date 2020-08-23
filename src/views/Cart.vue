@@ -1,10 +1,10 @@
 <template>
-  <!-- v-on:loadstart="new_list" -->
+
 
   <div>
     <div class="hide-on-small-only">
       <the-banner :color="'banner_marron'" :scroll="false" />
-
+     
       <div class="row">
         <div class="col s12">
           <div class="col m12 l6">
@@ -12,30 +12,30 @@
               <li class="relative barra_1 marron">
                 <!-- contenido -->
 
-                <div v-if="selecion.length > 0">
+                <div v-if="productos.length > 0">
                   <div class="col s12 conten_producto margin-t10">
                     <div
                       class="col m12 l10 offset-l1 smoke center valign-wrapper alegreya marron_text producto"
-                      v-for="(item, index) of selecion"
+                      v-for="(item, index) of productos"
                       :key="item.id"
                     >
                       <div class="col s1">
                         <div class="img_product">
-                          <img src="@/assets/svg/001-coffee-cup-1.svg" class alt srcset />
+                          <img src="../assets/svg/005-coffee.svg" class alt srcset />
                         </div>
                       </div>
 
-                      <div class="col s4">{{ item.nombre }}</div>
+                      <div class="col s4">{{ item.name }}</div>
 
-                      <div class="col s1 menu_productos_boton" @click="aumentar(index)">+</div>
+                      <div class="col s1 menu_productos_boton" @click="aumentar(index,productos)">+</div>
 
                       <div class="col s1">{{ item.cantidad }}</div>
 
-                      <div class="col s1 menu_productos_boton" @click="disminuir(index)">-</div>
+                      <div class="col s1 menu_productos_boton" @click="disminuir(index,productos)">-</div>
 
-                      <div class="col s2">$ {{ item.price }} c/u</div>
-                      <div class="col s2">$ {{ valor_por_cantidad(index) }}</div>
-                      <div class="col s1" @click="eliminar(index)">
+                      <div class="col s2">$ {{ item.precio }} c/u</div>
+                      <div class="col s2">$ {{ valor_por_cantidad(index,productos) }}</div>
+                      <div class="col s1" @click="eliminar(index,productos)">
                         <i class="material-icons">delete</i>
                       </div>
                     </div>
@@ -73,11 +73,11 @@
                 <img src="@/assets/girl_add_car.svg" alt srcset />
               </div>
             </div>
+              
+            <div class="col m6 l12 margin-t10" v-if="productos.length > 0">
+              <div class="col s12 center marron_text">Cantidad de productos : {{ cant_de_items }}</div>
 
-            <div class="col m6 l12 margin-t10" v-if="selecion.length>0">
-              <div class="col s12 center marron_text">Cantidad de productos : {{ cant_item }}</div>
-
-              <div class="col s12 center marron_text">Total a pagar : {{ cant_total }}</div>
+              <div class="col s12 center marron_text">Total a pagar : {{ total_a_pagar }}</div>
 
               <div class="col s8 offset-s2 conten valign-wrapper margin-t5">
                 <a class="col s5 btn marron alegreya waves-effect waves-light">Cancelar</a>
@@ -110,14 +110,14 @@
           </div>
         </div>
 
-        <div v-if="selecion.length > 0">
+        <div v-if="productos.length > 0">
           <div class="col s10 offset-s1 conten_producto margin-t5">
             <div
               class="col s12 white margin-t10 center valign-wrapper alegreya marron_text"
-              v-for="(item, index) in selecion"
+              v-for="(item, index) in productos"
               :key="item.id"
             >
-              <div class="col s1" @click="disminuir(index)">-</div>
+              <div class="col s1" @click="disminuir(index,productos)">-</div>
 
               <div class="col s1">
                 <div class="relative circulo_0 marron white-text">
@@ -129,11 +129,11 @@
                 <img src="../assets/svg/001-coffee-cup-1.svg" alt srcset />
               </div>
 
-              <div class="col s4">{{ item.nombre }}</div>
+              <div class="col s4">{{ item.name }}</div>
 
-              <div class="col s1" @click="aumentar(index)">+</div>
+              <div class="col s1" @click="aumentar(index,productos)">+</div>
 
-              <div class="col s3">$ {{ item.price }}</div>
+              <div class="col s3">$ {{ item.precio }}</div>
             </div>
           </div>
 
@@ -141,18 +141,18 @@
             <div class="col s12 center marron_text alegreya">
               <div class="col s6 marron_text offset-s1">Cantidad de productos :</div>
 
-              <div class="col s3 white marron_text">{{ cant_item }}</div>
+              <div class="col s3 white marron_text">{{ cant_de_items }}</div>
 
               <div class="col s6 marron_text offset-s1 margin-t5">Total a pagar :</div>
 
-              <div class="col s3 white marron_text margin-t5">{{ cant_total }}</div>
+              <div class="col s3 white marron_text margin-t5">{{total_a_pagar}}</div>
             </div>
           </div>
         </div>
 
         <div class="col s12 margin-t10 center" v-else>
           <p class="col s7 offset-s3 marron_text mano_negra margin-t10 t-medium">
-            Aun no has selecionado nada,
+            Aun no has productosado nada,
             <br />! Por que no mira nuestra lista de productos !
           </p>
 
@@ -164,7 +164,7 @@
           </div>
         </div>
 
-        <div class="col s12 margin-t5" v-if="cant_total > 0">
+        <div class="col s12 margin-t5" v-if="cant_de_items > 0">
           <router-link to="/Productos" class="col s4 offset-s4 btn mano_negra marron">Cancelar</router-link>
 
           <router-link
@@ -183,70 +183,26 @@
 import TheBanner from "../components/Compartidos/Banner/TheBanner.vue";
 import TheFooter from "../components/Compartidos/TheFooter.vue";
 import TheNavigationBar from "../components/Compartidos/TheNavigationBar.vue";
-import { mapState, mapMutations } from "vuex";
+import {produ_funcion} from "@/mixin/productos-fuccion.js"
+import { mapState } from "vuex";
 
 export default {
   name: "Cart",
+  mixins:[produ_funcion],
   components: {
     TheBanner,
     TheFooter,
     TheNavigationBar
   },
   data() {
-    return {};
-  },
-  beforeRouteEnter(to, from, next) {
-    next(function(vm) {
-      vm.new_list();
-    });
+    return {
+      productos:this.$store.state.databaseM.temp_list_shop
+    };
   },
   computed: {
-    ...mapState(["items", "selecion"]),
-    cant_item() {
-      var contador = 0;
-      for (var x = 0; x < this.selecion.length; x++) {
-        contador = contador + this.selecion[x].cantidad;
-      }
-      return contador;
-    },
-    cant_total() {
-      var contador = 0;
-      for (var x = 0; x < this.selecion.length; x++) {
-        contador =
-          contador + this.selecion[x].cantidad * this.selecion[x].price;
-      }
-      return contador;
-    }
   },
-
   methods: {
-    aumentar(index) {
-      var pan = this.selecion[index];
-      if (pan.cantidad < pan.existencia) {
-        return pan.cantidad++;
-      }
-    },
-    disminuir(index) {
-      var pan = this.selecion[index];
-      if (pan.cantidad > 0) {
-        return pan.cantidad--;
-      }
-    },
-    eliminar(index) {
-      this.selecion.splice(index, 1);
-    },
-    valor_por_cantidad(index) {
-      var pan = this.selecion[index];
-      return pan.cantidad * pan.price;
-    },
-    new_list() {
-      for (var x = 0; x < this.items.length; x++) {
-        if (this.items[x].cantidad > 0) {
-          this.selecion.push(this.items[x]);
-        }
-      }
-    }
-  }
+  },
 };
 </script>
 
