@@ -21,7 +21,7 @@
                     >
                       <div class="col s1">
                         <div class="img_product">
-                          <img src="../assets/svg/005-coffee.svg" class alt srcset />
+                          <img :src="getimg(item.img)" class alt srcset />
                         </div>
                       </div>
 
@@ -31,7 +31,7 @@
 
                       <div class="col s1">{{ item.cantidad }}</div>
 
-                      <div class="col s1 menu_productos_boton" @click="disminuir(index,productos)">-</div>
+                      <div class="col s1 menu_productos_boton" @click="disminuir(index,productos)"  v-if="item.cantidad > 0">-</div>
 
                       <div class="col s2">$ {{ item.precio }} c/u</div>
                       <div class="col s2">$ {{ valor_por_cantidad(index,productos) }}</div>
