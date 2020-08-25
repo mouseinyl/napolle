@@ -74,6 +74,10 @@ export default {
 .margin-t25 {
   margin-top: 25%;
 }
+.margin-b5 {
+  margin-bottom: 5%;
+}
+
 
 /* fin margenes */
 .poder-relative {
