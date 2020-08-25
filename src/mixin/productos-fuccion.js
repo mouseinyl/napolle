@@ -12,20 +12,12 @@ export const produ_funcion = {
         eliminar(index, list) {
             list.splice(index, 1)
             console.log(list)
+        },
+        getimg(img) {
+            return require('../' + img)
         }
     },
     computed: {
-        //exclusivo de productos {exclusivo para matrices}
-        cant_total(list) {
-            var contador = 0;
-            for (var x = 0; x < list.productos.length; x++) {
-                for (const a of list.productos[x]) {
-                    contador = a.cantidad + contador
-                }
-            }
-            return contador
-        },
-        //exclusivo de productos {exclusivo para matrices}
         cant_de_items(list) {
             var contador = 0;
             for (var x = 0; x < list.productos.length; x++) {
