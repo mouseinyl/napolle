@@ -80,9 +80,9 @@
               <div class="col s12 center marron_text">Total a pagar : {{ total_a_pagar }}</div>
 
               <div class="col s8 offset-s2 conten valign-wrapper margin-t5">
-                <a class="col s5 btn marron alegreya waves-effect waves-light">Cancelar</a>
+                <router-link to="/productos" class="col s5 btn marron alegreya waves-effect waves-light">Cancelar</router-link> 
 
-                <a class="col s5 btn marron alegreya waves-effect waves-light">Pagar</a>
+                <button class="col s5 btn marron alegreya waves-effect waves-light" @click="completar_pago">Pagar</button>
               </div>
             </div>
           </div>
@@ -166,11 +166,7 @@
 
         <div class="col s12 margin-t5" v-if="cant_de_items > 0">
           <router-link to="/Productos" class="col s4 offset-s4 btn mano_negra marron">Cancelar</router-link>
-
-          <router-link
-            to="/Cart"
-            class="col s6 offset-s3 btn mano_negra marron margin-t5"
-          >Completar pago</router-link>
+          <button class="col s6 offset-s3 btn mano_negra marron margin-t5" @click="completar_pago">Completar pago</button>
         </div>
       </div>
 
@@ -202,6 +198,9 @@ export default {
   computed: {
   },
   methods: {
+    completar_pago(){
+      console.log("completar pago")
+    }
   },
 };
 </script>

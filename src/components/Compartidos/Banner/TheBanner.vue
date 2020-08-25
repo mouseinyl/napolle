@@ -28,7 +28,7 @@
         </div>
       </nav>
       <div class="hide-on-large-only">
-        <i class="material-icons bu white-text" tabindex="1">menu</i>
+        <i class="material-icons bu marron-text" tabindex="1">menu</i>
         <div class="space">
           <div class="row">
             <div

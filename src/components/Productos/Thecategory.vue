@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h6 class="col s11 offset-s1 margin-t5 mano_negra marron_text" id="napolle's coffees">{{label}}</h6>
+        <h5 class="col s11 offset-s1 margin-t5 mano_negra marron_text" :id="label">{{label}}</h5>
         <div class="col m4 l3 margin-t3" v-for="(item, index) in productos" :key="item.id">
             <div class="col l10 offset-l1 smoke">
                 <div class="cantidad white-text mano_negra center" v-if="item.cantidad > 0">
