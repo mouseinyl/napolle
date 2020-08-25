@@ -27,46 +27,12 @@
           </div>
           <!-- -->
           <div class="col m10 l10 margin-t3">
-            <div class="col l12 box_productos">
-              <h6
-                class="col s11 offset-s1 margin-t5 mano_negra marron_text"
-                id="napolle's coffees"
-              >napolle's coffees</h6>
-              <div class="col m4 l3 margin-t3" v-for="(item, index) in productos[0]" :key="item.id">
-                <div class="col l10 offset-l1 smoke">
-                  <div class="cantidad white-text mano_negra center" v-if="item.cantidad > 0">
-                    <div class="marron">{{ item.cantidad }}</div>
-                  </div>
-                  <div class="col s12">
-                    <div class="col s6 offset-s3 margin-t3 circulo white">
-                      <img src="../assets/svg/005-coffee.svg" alt srcset />
-                    </div>
-                  </div>
-                  <div class="col s12 margin-b5">
-                    <p class="col s12 center marron_text alegreya">{{ item.name }}</p>
-                    <div class="col s4 mano_negra marron_text center" @click="aumentar(index,productos[0])">+</div>
-                    <div class="col s4 center marron_text alegreya">{{ item.precio }} c/u</div>
-                    <div class="col s4 mano_negra marron_text center" @click="disminuir(index,productos[0])">-</div>
-                  </div>
-                </div>
+            <div class="col l12 box_productos" >
+              <div v-for="item in productos" :key="item.id">
+               <ThecategoryVue :product_list="item" v-on:a="cant_total()"/>
               </div>
-              <!--  -->
-              <h6
-                class="col s11 offset-s1 margin-t5 mano_negra marron_text"
-                id="napolle's bakery"
-              >Napolle's Bakery</h6>
-
-              <!--  -->
-               
-              <h6
-                class="col s11 offset-s1 margin-t5 mano_negra marron_text"
-                id="napolle's bebidas"
-              >napolle's Bebidas</h6>
-              <!--  -->
+              <br>
             </div>
-            <!--  -->
-
-            <!--  -->
           </div>
         </div>
       </div>
@@ -75,7 +41,7 @@
       </div>
     </div>
 
-    <div class="absolute smoke hide-on-med-and-up">
+    <!-- <div class="absolute smoke hide-on-med-and-up">
       <div class="row">
         <div class="col s12 marron_text margin-t5">
           <div class="col s12 t-xx-large mano_negra">Ñapolle</div>
@@ -113,32 +79,29 @@
         </div>
       </div>
       <the-navigation-bar />
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
 import TheNavigationBar from "../components/Compartidos/TheNavigationBar.vue";
 import TheFooter from "../components/Compartidos/TheFooter.vue";
 import TheBanner from "../components/Compartidos/Banner/TheBanner.vue";
-
 import { mapState, mapMutations } from "vuex";
-import {produ_funcion} from "@/mixin/productos-fuccion.js"
+
+import ThecategoryVue from '../components/Productos/Thecategory.vue';
 
 export default {
   name: "Productos",
-  mixins:[produ_funcion],
+
   components: {
     TheBanner,
     TheFooter,
-    TheNavigationBar
+    TheNavigationBar,
+    ThecategoryVue
   },
-
- beforeEnter: (to, from, next) => {
-   console.log("hola")
- },
   data() {
     return {
-      productos:[this.$store.state.databaseM.items.coffes]
+      productos:this.$store.state.databaseM.items
     };
   },
   computed:{
@@ -147,8 +110,8 @@ export default {
   methods: {
     list_shop(){
       var tem=[];
-      for (var x=0;x<this.productos.length;x++){
-        for(const a of this.productos[x]){
+      for (var _c of this.productos){
+        for(const a of _c.list_producto){
             if(a.cantidad > 0){
               tem.push(a)
             }   
@@ -157,8 +120,20 @@ export default {
       console.log(tem)
       this.$store.commit("databaseM/cargar_list_temp",tem);
       this.$router.push("/Cart")
-    }
+    },
+   
   },
+  computed:{
+      cant_total(){
+        var contador = 0
+      for (var a of this.productos){
+        for (var b of a.list_producto){
+          contador = b.cantidad + contador
+        }
+      }
+      return contador
+    },
+  }
   
 
 };
@@ -224,19 +199,6 @@ export default {
 </style>
 
 <style scoped>
-.margin-b5 {
-  margin-bottom: 5%;
-}
-.margin-t3 {
-  margin-top: 3%;
-}
-.margin-t5 {
-  margin-top: 5%;
-}
-.margin-t10 {
-  margin-top: 10%;
-}
-
 .texto_label {
   font-size: 250%;
 }
@@ -251,13 +213,6 @@ h6 {
   transition: 0.5s;
   width: 70%;
 }
-
-/* .circulo {
-  height: auto;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' enable-background='new 123.3 0 595.2 595.2' id='Layer_1' version='1.1' viewBox='123.3 0 595.2 595.2' x='0px' xml:space='preserve' y='0px' %3E%3Cg id='change1_1'%3E%3Ccircle cx='420.9' cy='297.6' fill='%23fff' r='297.6' /%3E%3C/g%3E%3C/svg%3E");
-} */
 .circulo {
   border-radius: 50%;
   height: auto;
@@ -291,19 +246,5 @@ h6 {
 .box_productos::-webkit-scrollbar-thumb:hover {
   background: #6b4015;
 }
-.cantidad {
-  position: relative;
 
-  width: auto;
-  height: auto;
-  float: right;
-}
-.cantidad div {
-  position: absolute;
-  border-radius: 50%;
-  width: 25px;
-  height: 25px;
-  top: -4px;
-  right: -20px;
-}
 </style>
