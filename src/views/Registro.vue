@@ -28,7 +28,7 @@ import TheBanner from "../components/Compartidos/Banner/TheBanner.vue";
 import { mapState, mapMutations } from "vuex";
 import { auth } from "@/store/firebase.js";
 import Dibujo from "../components/log_info/Dibujo.vue";
-// import auth from "@/store/auth.js";
+
 export default {
   name: "Registro",
   components: {
