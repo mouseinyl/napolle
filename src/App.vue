@@ -35,14 +35,6 @@ export default {
   mounted() {
    this.carga()
   },
-  // methods:{
-  //   carga(){
-  //     console.log("hola")
-  //     // this.$store.dispatch("databaseM")
-  //       // console.log(this.$store.commit('generalM/Isloadding'))
-  //     }
-  // },
-  
 };
 </script>
 <style>
