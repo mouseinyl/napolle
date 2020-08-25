@@ -29,7 +29,7 @@
           <div class="col m10 l10 margin-t3">
             <div class="col l12 box_productos" >
               <div v-for="item in productos" :key="item.id">
-               <ThecategoryVue :product_list="item" v-on:a="cant_total()"/>
+               <ThecategoryVue :product_list="item"/>
               </div>
               <br>
             </div>
@@ -41,7 +41,7 @@
       </div>
     </div>
 
-    <!-- <div class="absolute smoke hide-on-med-and-up">
+    <div class="absolute smoke hide-on-med-and-up">
       <div class="row">
         <div class="col s12 marron_text margin-t5">
           <div class="col s12 t-xx-large mano_negra">Ñapolle</div>
@@ -54,24 +54,9 @@
             </div>
           </div>
         </div>
-        <div class="col s10 offset-s1 conten_producto margin-t5">
-          <div
-            class="col s12 white margin-t10 center valign-wrapper alegreya marron_text producto"
-            v-for="(item, index) in productos[0]"
-            :key="item.id"
-          >
-            <div class="col s1" @click="disminuir(index,productos[0])">-</div>
-            <div class="col s1">
-              <div class="relative circulo_0 marron white-text">
-                <div class="relative t">{{ item.cantidad }}</div>
-              </div>
-            </div>
-            <div class="col s2">
-              <img src="../assets/svg/001-coffee-cup-1.svg" alt srcset />
-            </div>
-            <div class="col s4">{{ item.name }}</div>
-            <div class="col s1" @click="aumentar(index,productos[0])">+</div>
-            <div class="col s3">$ {{ item.precio }}</div>
+        <div class="col s12  conten_producto margin-t5">
+          <div class="col s12" v-for="item in productos" :key="item.id">
+            <ThecategorymobileVue :product_list="item"/>
           </div>
         </div>
         <div class="col s12 margin-t5" v-if="cant_total > 0" >
@@ -79,7 +64,7 @@
         </div>
       </div>
       <the-navigation-bar />
-    </div> -->
+    </div>
   </div>
 </template>
 <script>
@@ -89,6 +74,8 @@ import TheBanner from "../components/Compartidos/Banner/TheBanner.vue";
 import { mapState, mapMutations } from "vuex";
 
 import ThecategoryVue from '../components/Productos/Thecategory.vue';
+import ThecategorymobileVue from '../components/Productos/Thecategorymobile.vue';
+ThecategorymobileVue
 
 export default {
   name: "Productos",
@@ -97,7 +84,8 @@ export default {
     TheBanner,
     TheFooter,
     TheNavigationBar,
-    ThecategoryVue
+    ThecategoryVue,
+    ThecategorymobileVue
   },
   data() {
     return {
@@ -163,17 +151,8 @@ export default {
 .c {
   transform: rotate(3deg);
 }
-.circulo_0 {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  margin-left: 0px;
-  left: 7px;
-  top: -5px;
-}
-.t {
-  top: -2px;
-}
+
+
 .conten_producto {
   height: 380px;
   overflow-y: scroll;
