@@ -3,7 +3,7 @@
     <div class="navbar-fixed hide-on-small-only">
       <nav v-scroll="handleScroll" class="transparent mano_negra" :class="[color_state]">
         <div class="nav-wrappe">
-          <a href="#" class="brand-logo p">Ñapole</a>
+          <router-link to="/" class="brand-logo p"> Ñapole</router-link> 
           <ul id="nav-mobile" class="right hide-on-med-and-down mg-8-left">
             <li class="principal_tag">
               <router-link class="principal_tag" to="/">Home</router-link>
@@ -20,7 +20,7 @@
                 <ul class="chill alegreya">
                   <router-link class="item tra" to="/Login" v-if="signin == false">Iniciar secion</router-link>
                   <router-link class="item" to="/Perfil" v-if="signin == true">perfil</router-link>
-                  <p class="item" v-if="signin == true" @click="outsign">cerrar cesion</p>
+                  <p class="item" v-if="signin == true" @click="close">cerrar cesion</p>
                 </ul>
               </div>
             </li>
@@ -28,13 +28,13 @@
         </div>
       </nav>
       <div class="hide-on-large-only">
-        <i class="material-icons bu marron-text" tabindex="1">menu</i>
+        <i :class='["material-icons","bu",color_state]' tabindex="1">menu</i>
         <div class="space">
           <div class="row">
             <div
               class="col s10 offset-m1 mano_negra marron_text t-xx-large center margin-t10 linea"
             >Ñapolle</div>
-            <ul class="col s12 margin-t10 center">
+            <ul class="col s12 margin-t10 center nav_mobile">
               <li class="col s12 margin-t5 principal_tag" tabindex="2">
                 <router-link class="col s12 marron_text mano_negra" to="/">Home</router-link>
               </li>
@@ -44,6 +44,11 @@
 
               <li class="col s12 margin-t5 principal_tag" tabindex="2">
                 <router-link class="col s12 marron_text mano_negra" to="/Cart">Cart</router-link>
+              </li>
+              <li class="col s12 margin-t5 principal_tag">
+                  <router-link class="col s12 marron_text mano_negra" to="/Login" v-if="signin == false">Iniciar secion</router-link>
+                  <router-link class="col s12 marron_text mano_negra" to="/Perfil" v-if="signin == true">perfil</router-link>
+                  <button class="col s12 btn white-text mano_negra margin-t3" v-if="signin == true" @click="close">cerrar cesion</button>
               </li>
             </ul>
           </div>
@@ -65,7 +70,7 @@ Vue.directive("scroll", {
     window.addEventListener("scroll", f);
   },
 });
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapMutations, mapActions } from "vuex";
 import { auth } from "@/store/firebase.js";
 export default {
   name: "TheBanner",
@@ -85,15 +90,21 @@ export default {
       color_state: this.color, // color inicializado
     };
   },
+ 
   computed: {
-    ...mapState(["signin"]),
+    signin(){
+      return this.$store.state.authM.Is_logged
+    }
   },
   methods: {
-    ...mapMutations(["onsignin"]),
-    outsign() {
-      //   // [START signout]
-      auth.signOut();
-      this.onsignin(false);
+    close(){
+      this.$store.dispatch("databaseM/setlistcart",{
+        datos:this.$store.state.databaseM.user_info,
+        list:this.$store.state.databaseM.temp_list_shop
+        })
+      this.$store.dispatch("authM/outsign").then(()=>{
+        this.$router.push("/")
+      })
     },
     handleScroll: function (evt, el) {
       if (this.scroll) {
@@ -101,18 +112,22 @@ export default {
         if (window.scrollY > 800) {
           this.color_state = "banner_marron";
         } else {
-          this.color_state = "banner_white";
+          this.color_state = "white-text";
         }
       } else {
         //se ejecuta color proporcionado si el proms scroll es false
         this.color_state = this.color;
       }
     },
+
   },
 };
 </script>
 
 <style scoped>
+i{
+  cursor: pointer;
+}
 nav {
   box-shadow: none !important;
 }
@@ -186,4 +201,5 @@ ul.chill .item {
   margin-top: 4px;
   margin-left: 5px;
 }
+
 </style>
