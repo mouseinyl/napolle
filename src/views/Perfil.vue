@@ -13,11 +13,11 @@
             <div class="col l8 m8 margin-t5 center">
               <div class="col s12">
                 <p class="col s4">Nombre:</p>
-                <p class="col s4 border-b">{{ info_user.name }}</p>
+                <p class="col s4 border-b">{{ user_info.name }}</p>
               </div>
               <div class="col s12">
                 <p class="col s4">Apellido:</p>
-                <p class="col s4 border-b">{{ info_user.apellido }}</p>
+                <p class="col s4 border-b">{{ user_info.last }}</p>
               </div>
             </div>
 
@@ -27,21 +27,21 @@
                   <p class="col s2">
                     <i class="material-icons">account_circle</i>
                   </p>
-                  <p class="col s6 border-b">{{ info_user.correo }}</p>
+                  <p class="col s6 border-b">{{ user_info.email }}</p>
                 </div>
-                <div class="col s12">
+                <!-- <div class="col s12">
                   <p class="col s2">
                     <i class="material-icons">vpn_key</i>
                   </p>
                   <p class="col s6 border-b">{{ info_user.clave }}</p>
-                </div>
+                </div> -->
               </div>
-              <div class="col s3 center">
+              <!-- <div class="col s3 center">
                 <div class="col s6">
                   <p class="col s12">Balance</p>
                   <p class="col s12">{{ info_user.balance }}</p>
                 </div>
-              </div>
+              </div> -->
             </div>
 
             <div class="col s12 margin-t5">
@@ -52,12 +52,8 @@
 
             <!--  -->
             <div class="col m12 l12">
-              <div class="poder_relativo">
-                <div class="poder_absolute">
-                  <div class="col circulo marron valign-wrapper white-text mano_negra center">
-                    <p class="col s12">Ñapolle</p>
-                  </div>
-                </div>
+              <div class="col pos-cir ">
+                <CirculoVue/>
               </div>
             </div>
           </div>
@@ -77,24 +73,24 @@
           </div>
           <div class="col s8 margin-t5 alegreya">
             <div class="col s12 marron_text">
-              <div class="col s10 offset-s1 center border-b">{{ info_user.name }}</div>
+              <div class="col s10 offset-s1 center border-b">{{ user_info.name }}</div>
             </div>
             <div class="col s12 marron_text margin-t5">
-              <div class="col s10 offset-s1 center border-b">{{ info_user.apellido }}</div>
+              <div class="col s10 offset-s1 center border-b">{{user_info.last }}</div>
             </div>
           </div>
           <div class="col s12 margin-t15">
             <div class="col s12 alegreya marron_text">
-              <div class="col s10 offset-s1 center border-b">{{ info_user.correo }}</div>
+              <div class="col s10 offset-s1 center border-b">{{ user_info.email }}</div>
             </div>
-            <div class="col s12 alegreya marron_text margin-t15">
+            <!-- <div class="col s12 alegreya marron_text margin-t15">
               <div class="col s10 offset-s1 center border-b">{{ info_user.clave }}</div>
-            </div>
+            </div> -->
           </div>
           <div class="col s12 marron_text">
-            <div
+            <!-- <div
               class="col s6 offset-s3 alegreya t-x-large margin-t10"
-            >Balance: {{info_user.balance}}</div>
+            >Balance: {{info_user.balance}}</div> -->
           </div>
           <div class="col s12">
             <div class="col s12 margin-t10 alegreya">
@@ -111,23 +107,23 @@
 import TheNavigationBar from "../components/Compartidos/TheNavigationBar.vue";
 import TheFooter from "../components/Compartidos/TheFooter.vue";
 import TheBanner from "../components/Compartidos/Banner/TheBanner.vue";
+import { mapState } from 'vuex';
+import CirculoVue from '../components/log_info/Circulo.vue';
+
 export default {
   name: "Perfil",
   components: {
     TheBanner,
     TheFooter,
-    TheNavigationBar
+    TheNavigationBar,
+    CirculoVue
   },
   data() {
     return {
-      info_user: {
-        name: "alan",
-        apellido: "Hidalgo",
-        correo: "rmaaron99@gmail.com",
-        clave: "clave",
-        balance: 8000
-      }
-    };
+    }
+  },
+  computed:{
+    ...mapState("databaseM",["user_info"])
   }
 };
 </script>
@@ -135,23 +131,9 @@ export default {
 .border-b {
   border-bottom: 2px solid #6b4015;
 }
-.poder_relativo {
-  position: relative;
-  left: -3%;
-  top: -32px;
-  height: auto;
-  width: inherit;
-}
-.poder_absolute {
-  position: absolute;
-  height: auto;
-  width: auto;
-}
-.circulo {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin: auto;
+.pos-cir{
+  margin-bottom:-4em;
+  margin-left:-3em ;
 }
 </style
 >>
