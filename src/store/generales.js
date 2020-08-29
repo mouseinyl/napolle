@@ -4,6 +4,9 @@ const state = {
 const mutations = {
     Isloadding() {
         state.loadding = !state.loadding;
+    },
+    setAlertMessage(state, data) {
+        M.toast({ html: data.menssage });
     }
 }
 const actions = {}
