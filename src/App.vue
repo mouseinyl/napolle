@@ -33,11 +33,14 @@ export default {
     }
   },
   mounted() {
-   this.carga()
+    this.carga()
+    M.AutoInit();
+    
   },
 };
 </script>
-<style>
+<style lang="scss">
+@import "./styles/Var-global.scss";
 @font-face {
   font-family: "mano_negra";
   src: url("./assets/font/WC-Mano-Negra-Bta/WCManoNegraBoldBta.otf")
@@ -46,6 +49,9 @@ export default {
 @font-face {
   font-family: "alegreya";
   src: url("./assets/font/alegreya/Alegreya-Bold.otf") format("opentype");
+}
+.btn{
+  background: $color-principal !important;
 }
 /* margenes */
 .margin-t3 {
