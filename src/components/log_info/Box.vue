@@ -7,30 +7,38 @@
         </div>
         <div class="col s12 margin-t5">
           <div v-if="registro">
-            <div class="col s5">
-              <i class="icon-imput material-icons marron_text">account_circle</i>
-              <input type="text" class="imput" v-model="name" />
+            <div class="input-field col s6">
+              <i class="material-icons prefix">account_box</i>
+              <input id="name" v-model="name" type="text">
+              <label for="name">First Name</label>
+               <span class="helper-text red-text" data-error="wrong" data-success="right" v-if="!validate_name">*Campo requerido</span>
             </div>
-            <div class="col s5 offset-s2">
-              <i class="icon-imput material-icons marron_text">account_circle</i>
-              <input type="text" class="imput" v-model="last" />
+            <div class="input-field col s6">
+              <i class="material-icons prefix">supervised_user_circle</i>
+              <input id="last_name" v-model="last" type="text">
+              <label for="last_name">Last Name</label>
+              <span class="helper-text red-text" data-error="wrong" data-success="right" v-if="!validate_last">*Campo requerido</span>
             </div>
           </div>
           <div class="col s12">
-            <div class="col s10 offset-s1 offset-m1">
-              <i class="icon-imput material-icons marron_text">account_circle</i>
-              <input type="text" v-model="User" />
-            </div>
-            <div class="col s10 offset-s1">
-              <i class="icon-imput material-icons marron_text">vpn_key</i>
-              <input type="text" v-model="Pass" />
-            </div>
+              <div class="input-field col s12">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="email" v-model="User" type="text">
+                <label for="email">Email</label>
+                <span class="helper-text" data-error="wrong" data-success="right" v-if="!validate_email && User !=''">Email no valido</span>
+              </div>
+               <div class="input-field col s12 ">
+                <i class="material-icons prefix">vpn_key</i>
+                <input id="password" v-model="Pass" type="password">
+                <label for="password">Password</label>
+                <span class="helper-text" data-error="wrong" data-success="right" v-if="!validate_pass && Pass != ''">La contraseña debe poseer mas de 6 caracteres</span>
+              </div>
           </div>
           <div v-if="registro">
             <div class="col s12 margin-t10">
               <button
                 class="col s8 offset-s2 btn marron white-text alegreya"
-                @click="Registro"
+                @click="Register"
               >Registrarse</button>
               <router-link
                 to="/login"
@@ -45,6 +53,7 @@
                 to="/registro"
                 class="col s6 offset-s1 center marron_text alegreya right margin-t5"
               >Registrarse</router-link>
+              
             </div>
           </div>
         </div>
@@ -84,51 +93,93 @@ export default {
   },
 
   computed: {
-    ...mapState(["signin"]),
+    validate_name(){
+      if(this.name != ""){
+        return true
+      }else {
+        return false
+      }
+    },
+    validate_last(){
+       if(this.name != ""){
+        return true
+      }else {
+        return false
+      }
+    },
+    validate_email(){
+      var email = this.User;
+      var Regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+      return Regex.test(email);
+    },
+    validate_pass(){
+       if (this.Pass.length >= 6) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    validate_infomation(){
+      if(this.registro){
+        if(this.validate_name && this.validate_last && this.validate_email && this.validate_pass){
+          return true
+
+        }else{
+          return false
+        }
+      }else{
+        if(this.validate_email && this.validate_pass){
+          return true
+        }else {
+          return false
+        }
+      }
+    } 
   },
   methods: {
-    ...mapMutations(["onsignin"]),
-    Registro() {
-      auth
-        .createUserWithEmailAndPassword(this.User, this.Pass)
-        .then(function () {
-          this.onsignin(true);
-        })
-        .catch(function (error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          // ...
-        });
-    },
+   
     Login() {
-      auth
-        .signInWithEmailAndPassword(this.User, this.Pass)
-        .then((result) => {
-          this.onsignin(true);
-          auth.currentUser.sendEmailVerification().then(function () {
-            // Email Verification sent!
-            // [START_EXCLUDE]
-            alert("Email Verification Sent!");
-            // [END_EXCLUDE]
-            console.log(auth.currentUser);
-          });
-          console.log(User);
-        })
-        .catch((err) => {
-          // Handle Errors here.
-          var errorCode = err.code;
-          s;
-          var errorMessage = err.message;
-          console.log(errorCode, "===", errorMessage);
-          if (errorCode == "auth/invalid-email") {
-            alert("Correo erroneo");
-          } else {
-            alert(errorCode, "===", errorMessage);
-          }
-          // ...
-        });
+      console.log(this.validate_infomation)
+      if(this.validate_infomation){
+        this.$store.dispatch("authM/signin",{user:this.User,pass:this.Pass}).then((snap)=>{
+          console.log(snap)
+          this.$store.dispatch("databaseM/getinfouser",snap.user).then(()=>{
+            this.$store.commit("authM/sign_swich",true)
+            this.$router.push('/')
+          })
+        }).catch((even)=>{
+    
+            this.$store.commit("generalM/setAlertMessage",{menssage:`<span class='alegreya'>'${even.message}</span>`})
+          })
+      }else{
+        this.$store.commit("generalM/setAlertMessage",{menssage:"<span class='alegreya'>Debes completar la informacion</span>"})
+      }
     },
+    Register(){
+      if(this.validate_infomation){
+          this.$store.dispatch("authM/signup",{user:this.User,pass:this.Pass}).then((snap)=>{
+            console.log(snap)
+            const datos =snap.user
+            console.log(datos)
+            const info={
+              name:this.name,
+              last:this.last,
+              uid:datos.uid,
+              email:datos.email,
+              list_cart:datos.list_cart
+            }
+          this.$store.dispatch("databaseM/setinfouser",info),
+          this.$store.commit("databaseM/cargarinfouser",info)
+          this.$store.commit("authM/sign_swich",true)
+          this.$router.push('/')
+          }).catch((even)=>{
+
+            this.$store.commit("generalM/setAlertMessage",{menssage:`<span class='alegreya'>'${even.message}</span>`})
+          })
+        }else{
+        this.$store.commit("generalM/setAlertMessage",{menssage:"<span class='alegreya'>Debes completar la informacion</span>"})
+      }
+    }
   },
 };
 </script>
@@ -140,14 +191,26 @@ export default {
   background: whitesmoke;
 }
 .pos-c {
-  margin-top: -10%;
+    margin-top: -15%;
+  }
+
+.input-field input[type="text"]:focus + label{
+  color:$color-principal !important
 }
-.icon-imput {
-  position: relative;
-  top: 38px;
-  left: -30px;
+.input-field input[type="password"]:focus + label{
+  color:$color-principal !important
 }
-input[type="text"]:focus {
+.input-field .prefix.active {
+  color:$color-principal !important;
+  
+}
+
+.input-field input[type="text"]:focus  {
+  border-bottom: 1px solid $color-principal !important;
+  -webkit-box-shadow: 0 1px 0 0 $color-principal;
+  box-shadow: 0 1px 0 0 $color-principal !important;
+}
+.input-field input[type="password"]:focus  {
   border-bottom: 1px solid $color-principal !important;
   -webkit-box-shadow: 0 1px 0 0 $color-principal;
   box-shadow: 0 1px 0 0 $color-principal !important;
@@ -161,5 +224,6 @@ input[type="text"]:focus {
   .pos-c {
     margin-top: -20%;
   }
+ 
 }
 </style>
